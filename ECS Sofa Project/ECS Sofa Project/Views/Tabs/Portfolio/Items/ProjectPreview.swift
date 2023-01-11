@@ -12,17 +12,15 @@ struct ProjectPreview: View {
     let project: ProjectModel
     
     let height: CGFloat = 120
-    let width: CGFloat  = 170
     let radius: CGFloat = 16
     
     var body: some View {
-
         RoundedRectangle(cornerRadius: radius)
-            .frame(width: width, height: height)
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: height)
             .overlay{
                 Image(project.imgName)
                     .scaledToFit()
-                    .frame(width: width, height: height)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: height)
                     .cornerRadius(radius)
                 VStack{
                     Spacer()
