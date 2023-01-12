@@ -14,15 +14,4 @@ struct ProjectModel: Identifiable {
     var title: String
     var image: UIImage?
     
-    func addProject() {
-        projectArray.append(self)
-    }
-    
 }
-
-
-var projectArray = [
-    ProjectModel(title: "Title", image: UIImage(named: "Project") ?? nil),
-    ProjectModel(title: "Title", image: UIImage(named: "Project") ?? nil),
-    ProjectModel(title: "Title", image: UIImage(named: "Project") ?? nil)
-]

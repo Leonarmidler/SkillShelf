@@ -19,6 +19,7 @@ struct ProjectPreview: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: height)
             .overlay{
                 Image(uiImage: project.image!)
+                    .resizable()
                     .scaledToFit()
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: height)
                     .cornerRadius(radius)
@@ -38,8 +39,8 @@ struct ProjectPreview: View {
     }
 }
 
-struct ProjectPreview_Previews: PreviewProvider {
-    static var previews: some View {
-        ProjectPreview(project: projectArray[0])
-    }
-}
+//struct ProjectPreview_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProjectPreview()
+//    }
+//}
