@@ -37,7 +37,7 @@ struct Portfolio: View {
                 })
             }
             .sheet(isPresented: $isAddingProject){
-                InProgress()
+                AddProjectModal(isAddingProject: $isAddingProject)
             }
         }
     }

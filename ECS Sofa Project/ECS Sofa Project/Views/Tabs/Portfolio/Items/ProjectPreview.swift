@@ -18,7 +18,7 @@ struct ProjectPreview: View {
         RoundedRectangle(cornerRadius: radius)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: height)
             .overlay{
-                Image(project.imgName)
+                Image(uiImage: project.image!)
                     .scaledToFit()
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: height)
                     .cornerRadius(radius)
