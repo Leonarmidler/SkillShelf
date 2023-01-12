@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Portfolio: View {
     
+    @State var isAddingProject = false
     let columns: [GridItem] = [GridItem(), GridItem()]
     
     var body: some View {
@@ -27,14 +28,23 @@ struct Portfolio: View {
                 .padding()
                 Spacer()
             }
+            .toolbar{
+                Button(action: {
+                    isAddingProject = true
+                }, label: {
+                    Image(systemName: "plus")
+                    
+                })
+            }
+            .sheet(isPresented: $isAddingProject){
+                InProgress()
+            }
         }
-        
     }
 }
 
 struct Portfolio_Previews: PreviewProvider {
     static var previews: some View {
         Portfolio()
-            .preferredColorScheme(.dark)
     }
 }
