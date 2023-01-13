@@ -6,15 +6,54 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct AddProjectModal: View {
+    
+    @State private var newProject = ProjectModel(title: "", image: nil)
+        
+    @ObservedObject var viewModel: PortfolioViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                Form {
+                    Section {
+                        TextField("Enter project title", text: $newProject.title)
+                    }
+                    
+                    Section("Select image for your project") {
+                        PickerView(newProject: $newProject)
+                    }
+                    
+                }
+                .formStyle(.grouped)
+                
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        viewModel.addProject(newProject: newProject)
+                        viewModel.isAddingProject = false
+                    } label: {
+                        Text("Add")
+                    }
+                    
+                }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        viewModel.isAddingProject = false
+                    } label: {
+                        Text("Cancel")
+                    }
+                }
+            }
+        }
     }
 }
 
-struct AddProjectModal_Previews: PreviewProvider {
-    static var previews: some View {
-        AddProjectModal()
-    }
-}
+//struct AddProjectModal_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddProjectModal(isAddingProject: .constant(false))
+//    }
+//}

@@ -11,14 +11,7 @@ struct ProjectModel: Identifiable {
     
     let id = UUID()
 
-    let title: String
-    let imgName: String
+    var title: String
+    var image: UIImage?
     
 }
-
-
-let projectArray = [
-    ProjectModel(title: "Title", imgName: "Project"),
-    ProjectModel(title: "Title", imgName: "Project"),
-    ProjectModel(title: "Title", imgName: "Project")
-]

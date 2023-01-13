@@ -7,25 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04845A2229706C5D00180520 /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845A2129706C5D00180520 /* PortfolioViewModel.swift */; };
+		04845A24297070A200180520 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845A23297070A200180520 /* PickerView.swift */; };
 		A733BECC296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BECB296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift */; };
 		A733BECE296EEE8E001347D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BECD296EEE8E001347D7 /* ContentView.swift */; };
 		A733BED0296EEE8F001347D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A733BECF296EEE8F001347D7 /* Assets.xcassets */; };
 		A733BED3296EEE8F001347D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A733BED2296EEE8F001347D7 /* Preview Assets.xcassets */; };
-		A733BEDB296EEF84001347D7 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BEDA296EEF84001347D7 /* Portfolio.swift */; };
-		A733BEDD296EEFAD001347D7 /* InProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BEDC296EEFAD001347D7 /* InProgress.swift */; };
+		A733BEDB296EEF84001347D7 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BEDA296EEF84001347D7 /* PortfolioView.swift */; };
+		A733BEDD296EEFAD001347D7 /* InProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BEDC296EEFAD001347D7 /* InProgressView.swift */; };
 		A733BEDF296EEFE0001347D7 /* AddProjectModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */; };
 		A733BEE4296EF073001347D7 /* ProjectPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BEE3296EF073001347D7 /* ProjectPreview.swift */; };
 		A773F087296F0D9700AF520C /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A773F086296F0D9700AF520C /* ProjectModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04845A2129706C5D00180520 /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
+		04845A23297070A200180520 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		A733BEC8296EEE8E001347D7 /* ECS Sofa Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ECS Sofa Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A733BECB296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECS_Sofa_ProjectApp.swift; sourceTree = "<group>"; };
 		A733BECD296EEE8E001347D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A733BECF296EEE8F001347D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A733BED2296EEE8F001347D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A733BEDA296EEF84001347D7 /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
-		A733BEDC296EEFAD001347D7 /* InProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgress.swift; sourceTree = "<group>"; };
+		A733BEDA296EEF84001347D7 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
+		A733BEDC296EEFAD001347D7 /* InProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressView.swift; sourceTree = "<group>"; };
 		A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectModal.swift; sourceTree = "<group>"; };
 		A733BEE3296EF073001347D7 /* ProjectPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPreview.swift; sourceTree = "<group>"; };
 		A773F086296F0D9700AF520C /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
@@ -42,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04845A2029706C3E00180520 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				04845A2129706C5D00180520 /* PortfolioViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		A733BEBF296EEE8E001347D7 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +75,7 @@
 			children = (
 				A733BECB296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift */,
 				A773F085296F0D7D00AF520C /* Views */,
+				04845A2029706C3E00180520 /* ViewModels */,
 				A773F084296F0D6900AF520C /* Models */,
 				A733BECF296EEE8F001347D7 /* Assets.xcassets */,
 				A733BED1296EEE8F001347D7 /* Preview Content */,
@@ -90,7 +103,7 @@
 		A733BEE0296EEFF0001347D7 /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
-				A733BEDA296EEF84001347D7 /* Portfolio.swift */,
+				A733BEDA296EEF84001347D7 /* PortfolioView.swift */,
 				A733BEE2296EF00E001347D7 /* Items */,
 			);
 			path = Portfolio;
@@ -99,7 +112,7 @@
 		A733BEE1296EEFFA001347D7 /* InProgress */ = {
 			isa = PBXGroup;
 			children = (
-				A733BEDC296EEFAD001347D7 /* InProgress.swift */,
+				A733BEDC296EEFAD001347D7 /* InProgressView.swift */,
 			);
 			name = InProgress;
 			sourceTree = "<group>";
@@ -108,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */,
+				04845A23297070A200180520 /* PickerView.swift */,
 				A733BEE3296EF073001347D7 /* ProjectPreview.swift */,
 			);
 			path = Items;
@@ -200,13 +214,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A733BEDB296EEF84001347D7 /* Portfolio.swift in Sources */,
+				A733BEDB296EEF84001347D7 /* PortfolioView.swift in Sources */,
 				A733BECE296EEE8E001347D7 /* ContentView.swift in Sources */,
+				04845A24297070A200180520 /* PickerView.swift in Sources */,
 				A773F087296F0D9700AF520C /* ProjectModel.swift in Sources */,
 				A733BEE4296EF073001347D7 /* ProjectPreview.swift in Sources */,
 				A733BECC296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift in Sources */,
+				04845A2229706C5D00180520 /* PortfolioViewModel.swift in Sources */,
 				A733BEDF296EEFE0001347D7 /* AddProjectModal.swift in Sources */,
-				A733BEDD296EEFAD001347D7 /* InProgress.swift in Sources */,
+				A733BEDD296EEFAD001347D7 /* InProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,16 +7,15 @@
 
 import SwiftUI
 
-struct Portfolio: View {
-    
-    @State var isAddingProject = false
+struct PortfolioView: View {
+    @StateObject private var viewModel = PortfolioViewModel()
     let columns: [GridItem] = [GridItem(), GridItem()]
     
     var body: some View {
         NavigationStack{
             VStack {
                 LazyVGrid(columns: columns){
-                    ForEach(projectArray){ project in
+                    ForEach(viewModel.projectArray){ project in
                         NavigationLink(destination: {
                             
                         }, label: {
@@ -30,14 +29,14 @@ struct Portfolio: View {
             }
             .toolbar{
                 Button(action: {
-                    isAddingProject = true
+                    viewModel.isAddingProject = true
                 }, label: {
                     Image(systemName: "plus")
                     
                 })
             }
-            .sheet(isPresented: $isAddingProject){
-                InProgress()
+            .sheet(isPresented: $viewModel.isAddingProject){
+                AddProjectModal(viewModel: viewModel)
             }
         }
     }
@@ -45,6 +44,6 @@ struct Portfolio: View {
 
 struct Portfolio_Previews: PreviewProvider {
     static var previews: some View {
-        Portfolio()
+        PortfolioView()
     }
 }

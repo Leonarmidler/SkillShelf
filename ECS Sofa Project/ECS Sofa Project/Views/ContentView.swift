@@ -11,12 +11,12 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         TabView {
-            Portfolio()
+            PortfolioView()
                 .tabItem {
                     Text("Portfolio")
                     Image(systemName: "tray.full")
                 }.tag(1)
-            InProgress()
+            InProgressView()
                 .tabItem {
                     Text("In Progress")
                     Image(systemName: "checklist")
