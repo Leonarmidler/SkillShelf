@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var dataController = DataController()
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         TabView {
@@ -22,11 +23,12 @@ struct ContentView: View {
                     Image(systemName: "checklist")
                 }.tag(2)
         }
+        .environmentObject(dataController)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(DataController())
     }
 }

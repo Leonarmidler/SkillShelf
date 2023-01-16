@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		04845A2229706C5D00180520 /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845A2129706C5D00180520 /* PortfolioViewModel.swift */; };
 		04845A24297070A200180520 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845A23297070A200180520 /* PickerView.swift */; };
+		04B858B62975B4970096E2AF /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B858B52975B4970096E2AF /* DataController.swift */; };
+		04B858B92975B4B70096E2AF /* ProjectEntity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04B858B72975B4B70096E2AF /* ProjectEntity.xcdatamodeld */; };
 		A733BECC296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BECB296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift */; };
 		A733BECE296EEE8E001347D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BECD296EEE8E001347D7 /* ContentView.swift */; };
 		A733BED0296EEE8F001347D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A733BECF296EEE8F001347D7 /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		04845A2129706C5D00180520 /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
 		04845A23297070A200180520 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		04B858B52975B4970096E2AF /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		04B858B82975B4B70096E2AF /* ProjectEntity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProjectEntity.xcdatamodel; sourceTree = "<group>"; };
 		A733BEC8296EEE8E001347D7 /* ECS Sofa Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ECS Sofa Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A733BECB296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECS_Sofa_ProjectApp.swift; sourceTree = "<group>"; };
 		A733BECD296EEE8E001347D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 				A773F085296F0D7D00AF520C /* Views */,
 				04845A2029706C3E00180520 /* ViewModels */,
 				A773F084296F0D6900AF520C /* Models */,
+				04B858B52975B4970096E2AF /* DataController.swift */,
+				04B858B72975B4B70096E2AF /* ProjectEntity.xcdatamodeld */,
 				A733BECF296EEE8F001347D7 /* Assets.xcassets */,
 				A733BED1296EEE8F001347D7 /* Preview Content */,
 			);
@@ -240,10 +246,12 @@
 				04845A24297070A200180520 /* PickerView.swift in Sources */,
 				A773F087296F0D9700AF520C /* ProjectModel.swift in Sources */,
 				A733BEE4296EF073001347D7 /* ProjectPreview.swift in Sources */,
+				04B858B62975B4970096E2AF /* DataController.swift in Sources */,
 				A733BECC296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift in Sources */,
 				04845A2229706C5D00180520 /* PortfolioViewModel.swift in Sources */,
 				A733BEDF296EEFE0001347D7 /* AddProjectModal.swift in Sources */,
 				A733BEDD296EEFAD001347D7 /* InProgressView.swift in Sources */,
+				04B858B92975B4B70096E2AF /* ProjectEntity.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +452,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		04B858B72975B4B70096E2AF /* ProjectEntity.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				04B858B82975B4B70096E2AF /* ProjectEntity.xcdatamodel */,
+			);
+			currentVersion = 04B858B82975B4B70096E2AF /* ProjectEntity.xcdatamodel */;
+			path = ProjectEntity.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A733BEC0296EEE8E001347D7 /* Project object */;
 }
