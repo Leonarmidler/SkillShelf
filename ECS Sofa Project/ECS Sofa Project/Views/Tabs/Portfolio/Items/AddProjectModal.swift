@@ -5,15 +5,12 @@
 //  Created by Leonardo Daniele on 11/01/23.
 //
 
-import SwiftUI
 import PhotosUI
+import SwiftUI
 
 struct AddProjectModal: View {
-    
     @State private var newProject = ProjectModel(title: "", image: nil)
-        
     @ObservedObject var viewModel: PortfolioViewModel
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -21,14 +18,11 @@ struct AddProjectModal: View {
                     Section {
                         TextField("Enter project title", text: $newProject.title)
                     }
-                    
                     Section("Select image for your project") {
                         PickerView(newProject: $newProject)
                     }
-                    
                 }
                 .formStyle(.grouped)
-                
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -38,7 +32,6 @@ struct AddProjectModal: View {
                     } label: {
                         Text("Add")
                     }
-                    
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
@@ -52,8 +45,8 @@ struct AddProjectModal: View {
     }
 }
 
-//struct AddProjectModal_Previews: PreviewProvider {
+// struct AddProjectModal_Previews: PreviewProvider {
 //    static var previews: some View {
 //        AddProjectModal(isAddingProject: .constant(false))
 //    }
-//}
+// }

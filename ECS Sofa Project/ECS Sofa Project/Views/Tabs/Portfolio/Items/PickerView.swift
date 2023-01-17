@@ -5,15 +5,13 @@
 //  Created by Serena on 12/01/23.
 //
 
-import SwiftUI
 import PhotosUI
+import SwiftUI
 
 struct PickerView: View {
-    @State private var selectedItem: PhotosPickerItem? = nil
-    @State private var selectedImageData: Data? = nil
-    
+    @State private var selectedItem: PhotosPickerItem?
+    @State private var selectedImageData: Data?
     @Binding var newProject: ProjectModel
-    
     var body: some View {
         VStack {
             PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
@@ -35,7 +33,6 @@ struct PickerView: View {
                     }
                 }
             }
-            
             if let selectedImageData,
                let uiImage = UIImage(data: selectedImageData) {
                 Image(uiImage: uiImage)
@@ -47,8 +44,8 @@ struct PickerView: View {
     }
 }
 
-//struct PickerView_Previews: PreviewProvider {
+// struct PickerView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        PickerView()
 //    }
-//}
+// }

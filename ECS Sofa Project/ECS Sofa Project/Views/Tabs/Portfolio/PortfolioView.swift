@@ -12,12 +12,11 @@ struct PortfolioView: View {
     let columns: [GridItem] = [GridItem(), GridItem()]
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             VStack {
-                LazyVGrid(columns: columns){
-                    ForEach(viewModel.projectArray){ project in
+                LazyVGrid(columns: columns) {
+                    ForEach(viewModel.projectArray) { project in
                         NavigationLink(destination: {
-                            
                         }, label: {
                             ProjectPreview(project: project)
                         })
@@ -27,15 +26,14 @@ struct PortfolioView: View {
                 .padding()
                 Spacer()
             }
-            .toolbar{
+            .toolbar {
                 Button(action: {
                     viewModel.isAddingProject = true
                 }, label: {
                     Image(systemName: "plus")
-                    
                 })
             }
-            .sheet(isPresented: $viewModel.isAddingProject){
+            .sheet(isPresented: $viewModel.isAddingProject) {
                 AddProjectModal(viewModel: viewModel)
             }
         }

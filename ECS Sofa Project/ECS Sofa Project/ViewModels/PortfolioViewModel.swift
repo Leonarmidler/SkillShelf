@@ -6,19 +6,18 @@
 //
 
 import Foundation
-import SwiftUI
 import PhotosUI
+import SwiftUI
 
 final class PortfolioViewModel: ObservableObject {
     @Published var isAddingProject = false
     @Published var projectArray = [
-        ProjectModel(title: "Title", image: UIImage(named: "Project") ?? nil),
-        ProjectModel(title: "Title", image: UIImage(named: "Project") ?? nil),
-        ProjectModel(title: "Title", image: UIImage(named: "Project") ?? nil)
+        ProjectModel(title: "Title", image: UIImage(named: "Project")),
+        ProjectModel(title: "Title", image: UIImage(named: "Project")),
+        ProjectModel(title: "Title", image: UIImage(named: "Project"))
     ]
 
     func addProject(newProject: ProjectModel) {
         projectArray.append(newProject)
     }
-    
 }
