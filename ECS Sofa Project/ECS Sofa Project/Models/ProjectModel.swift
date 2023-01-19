@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct ProjectModel: Identifiable {
+    
     let id = UUID()
-    var title: String
+    
     var image: UIImage?
+    var title: String
+    var description: String
+    var tags: [Tags]
+    
 }
