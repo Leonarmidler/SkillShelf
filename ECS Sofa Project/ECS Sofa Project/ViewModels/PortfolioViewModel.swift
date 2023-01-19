@@ -26,21 +26,15 @@ final class PortfolioViewModel: ObservableObject {
         projectArray.append(newProject)
     }
     
-    func getRepositories() async {
+    func getRepositories(userName: String) async {
         do {
-            let url = URL(string: "https://api.github.com/users/Alessandro-Cei/repos?type=all")
+            let url = URL(string: "https://api.github.com/users/\(userName)/repos?type=all")
             let request = URLRequest(url: url!)
             let (data, _) = try await URLSession.shared.data(for: request)
             
             self.repositories = try decoder.decode([Repository].self, from: data)
-            
-            
-            for repo in repositories {
-                print(repo)
-            }            
         } catch {
-            print("SONO NEL CATCH")
-            print(error.localizedDescription)
+            print("ERROR: \(error.localizedDescription)")
         }
     }
 }

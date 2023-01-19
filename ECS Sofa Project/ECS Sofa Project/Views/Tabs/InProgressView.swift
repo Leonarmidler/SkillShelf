@@ -11,13 +11,7 @@ struct InProgressView: View {
     @ObservedObject var viewModel = PortfolioViewModel()
     
     var body: some View {
-        Button {
-            Task {
-                await viewModel.getRepositories()
-            }
-        } label: {
-            Text("PRINTO")
-        }
+        Text("Hello, World")
     }
 }
 
