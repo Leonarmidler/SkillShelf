@@ -9,6 +9,15 @@ import Foundation
 import PhotosUI
 import SwiftUI
 
+enum Tags {
+    case SwiftUI
+    case UIKit
+    case CoreML
+    case CoreData
+    case PhotosUI
+}
+
+
 @MainActor
 final class PortfolioViewModel: ObservableObject {
     // API VARIABLES
@@ -16,10 +25,12 @@ final class PortfolioViewModel: ObservableObject {
     let decoder = JSONDecoder()
     
     @Published var isAddingProject = false
+    @Published var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
+
     @Published var projectArray = [
-        ProjectModel(title: "Title", image: UIImage(named: "Project")),
-        ProjectModel(title: "Title", image: UIImage(named: "Project")),
-        ProjectModel(title: "Title", image: UIImage(named: "Project"))
+        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", description: "Lorem ipsum dolor sit amet", tags: []),
+        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", description: "Lorem ipsum dolor sit amet", tags: []),
+        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", description: "Lorem ipsum dolor sit amet", tags: [])
     ]
     
     func addProject(newProject: ProjectModel) {
