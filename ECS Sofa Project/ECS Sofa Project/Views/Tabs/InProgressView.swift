@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct InProgressView: View {
+    @ObservedObject var viewModel = PortfolioViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            Task {
+                await viewModel.getRepositories()
+            }
+        } label: {
+            Text("PRINTO")
+        }
     }
 }
 

@@ -18,6 +18,7 @@
 		A733BEDF296EEFE0001347D7 /* AddProjectModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */; };
 		A733BEE4296EF073001347D7 /* ProjectPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BEE3296EF073001347D7 /* ProjectPreview.swift */; };
 		A773F087296F0D9700AF520C /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A773F086296F0D9700AF520C /* ProjectModel.swift */; };
+		A7EB443F29783E3D00703A25 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EB443E29783E3D00703A25 /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectModal.swift; sourceTree = "<group>"; };
 		A733BEE3296EF073001347D7 /* ProjectPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPreview.swift; sourceTree = "<group>"; };
 		A773F086296F0D9700AF520C /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		A7EB443E29783E3D00703A25 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				A773F086296F0D9700AF520C /* ProjectModel.swift */,
+				A7EB443E29783E3D00703A25 /* Repository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,7 +216,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		58211A3E2975ACA300244071 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -224,7 +227,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A733BEDB296EEF84001347D7 /* PortfolioView.swift in Sources */,
+				A7EB443F29783E3D00703A25 /* Repository.swift in Sources */,
 				A733BECE296EEE8E001347D7 /* ContentView.swift in Sources */,
 				04845A24297070A200180520 /* PickerView.swift in Sources */,
 				A773F087296F0D9700AF520C /* ProjectModel.swift in Sources */,
