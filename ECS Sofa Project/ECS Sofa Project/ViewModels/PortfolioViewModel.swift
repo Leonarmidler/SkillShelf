@@ -36,7 +36,7 @@ final class PortfolioViewModel: ObservableObject {
             
             
             for repo in repositories {
-                print(repo.name)
+                print(repo)
             }            
         } catch {
             print("SONO NEL CATCH")
