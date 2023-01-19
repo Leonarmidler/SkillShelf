@@ -13,7 +13,7 @@ struct TagSelectionView: View {
     @Binding var tagViews: [TagView]
     
     //@State var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
-    @ObservedObject var viewModel: PortfolioViewModel
+    @EnvironmentObject var viewModel: PortfolioViewModel
     @State var newTags: [TagView] = []
     @State var tagSelections = [(Tags, Bool)]()
     
@@ -92,7 +92,7 @@ struct TagSelectionView: View {
 
 struct TagSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        TagSelectionView(isSelectingTag: .constant(true), tagViews: .constant([TagView(name: .SwiftUI)]), viewModel: PortfolioViewModel())
+        TagSelectionView(isSelectingTag: .constant(true), tagViews: .constant([TagView(name: .SwiftUI)]))
             .preferredColorScheme(.dark)
     }
 }

@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-struct InProgressView: View {
-    @ObservedObject var viewModel = PortfolioViewModel()
-    
+struct InProgressView: View {    
     var body: some View {
         Text("Hello, World")
     }

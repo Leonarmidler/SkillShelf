@@ -10,7 +10,7 @@ import PhotosUI
 
 struct AddProjectModal: View {
     
-    @ObservedObject var viewModel: PortfolioViewModel
+    @EnvironmentObject var viewModel: PortfolioViewModel
     @State private var newProject = ProjectModel(title: "", description: "", tags: [])
     @State var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
     @State var tagViews: [TagView] = []
@@ -54,7 +54,7 @@ struct AddProjectModal: View {
                                 }
                             }
                             .sheet(isPresented: $isSelectingTag){
-                                TagSelectionView(isSelectingTag: $isSelectingTag, tagViews: $tagViews, viewModel: viewModel)
+                                TagSelectionView(isSelectingTag: $isSelectingTag, tagViews: $tagViews)
                             }
                         }
                         Spacer()
@@ -63,7 +63,7 @@ struct AddProjectModal: View {
                             HStack{
                               Spacer()
                                 Button(action: {
-                                    //Opens the GitHub retrieval sheet
+                                    viewModel.isAddingFromGit = true
                                 }, label: {
                                     Text("Retrieve from GitHub")
                                         .frame(width: geo.size.width * 0.6, height: geo.size.height * 0.07)
@@ -77,6 +77,9 @@ struct AddProjectModal: View {
                         .listRowBackground(Color.clear)
                     }
                     .formStyle(.grouped)
+                }
+                .sheet(isPresented: $viewModel.isAddingFromGit) {
+                    AddFromGitModal()
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -105,7 +108,7 @@ struct AddProjectModal: View {
 
 struct AddProjectModal_Previews: PreviewProvider {
     static var previews: some View {
-        AddProjectModal(viewModel: PortfolioViewModel())
+        AddProjectModal()
             .preferredColorScheme(.dark)
     }
 }

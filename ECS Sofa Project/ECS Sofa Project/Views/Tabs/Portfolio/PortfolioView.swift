@@ -34,8 +34,9 @@ struct PortfolioView: View {
                 })
             }
             .sheet(isPresented: $viewModel.isAddingProject) {
-                AddProjectModal(viewModel: viewModel)
+                AddProjectModal()
             }
+            .environmentObject(viewModel)
         }
     }
 }

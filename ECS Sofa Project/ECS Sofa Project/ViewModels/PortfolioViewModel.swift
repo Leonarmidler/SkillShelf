@@ -25,6 +25,8 @@ final class PortfolioViewModel: ObservableObject {
     let decoder = JSONDecoder()
     
     @Published var isAddingProject = false
+    @Published var isAddingFromGit = false
+    @Published var repoSelections = [(Repository, Bool)]()
     @Published var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
 
     @Published var projectArray = [
@@ -35,6 +37,12 @@ final class PortfolioViewModel: ObservableObject {
     
     func addProject(newProject: ProjectModel) {
         projectArray.append(newProject)
+    }
+    
+    func setRepoSelections() {
+        for repo in repositories {
+            repoSelections.append((repo, false))
+        }
     }
     
     func getRepositories(userName: String) async {

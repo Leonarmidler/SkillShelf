@@ -6,7 +6,8 @@
 import Foundation
 
 // MARK: - Repository
-struct Repository: Codable {
+struct Repository: Codable, Identifiable {
+    let id: Int
     let name: String
     let description: String?
 }
