@@ -9,22 +9,23 @@ import SwiftUI
 
 struct ProjectPreview: View {
     let project: ProjectModel
-    let height: CGFloat = 120
-    let radius: CGFloat = 16
+    let height: CGFloat
+    let radius: CGFloat
     var body: some View {
         RoundedRectangle(cornerRadius: radius)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: height)
             .overlay {
                 Image(uiImage: project.image!)
                     .resizable()
-                    .scaledToFit()
+                    .aspectRatio(contentMode: .fill)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: height)
                     .cornerRadius(radius)
                 VStack {
                     Spacer()
                     HStack {
                         Text(project.title)
-                            .font(.title)
+                            .font(.caption)
+                            .fontWeight(.semibold)
                             .foregroundColor(.white)
                         Spacer()
                     }
@@ -34,8 +35,8 @@ struct ProjectPreview: View {
     }
 }
 
-// struct ProjectPreview_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProjectPreview()
-//    }
-// }
+ struct ProjectPreview_Previews: PreviewProvider {
+    static var previews: some View {
+        ProjectPreview(project: ProjectModel(image: UIImage(named: "Project"), title: "Title", description: "Description", tags: [.SwiftUI, .UIKit]), height: 120, radius: 12)
+    }
+ }
