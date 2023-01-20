@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		04845A2229706C5D00180520 /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845A2129706C5D00180520 /* PortfolioViewModel.swift */; };
 		04845A24297070A200180520 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845A23297070A200180520 /* PickerView.swift */; };
+		04CE85382979952A00BDE404 /* AddFromGitModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE85372979952A00BDE404 /* AddFromGitModal.swift */; };
+		587D57FC29798CDE0005B0E3 /* TagSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D57FA29798CDE0005B0E3 /* TagSelectionView.swift */; };
+		587D57FD29798CDE0005B0E3 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D57FB29798CDE0005B0E3 /* TagView.swift */; };
 		A733BECC296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BECB296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift */; };
 		A733BECE296EEE8E001347D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BECD296EEE8E001347D7 /* ContentView.swift */; };
 		A733BED0296EEE8F001347D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A733BECF296EEE8F001347D7 /* Assets.xcassets */; };
@@ -18,11 +21,15 @@
 		A733BEDF296EEFE0001347D7 /* AddProjectModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */; };
 		A733BEE4296EF073001347D7 /* ProjectPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BEE3296EF073001347D7 /* ProjectPreview.swift */; };
 		A773F087296F0D9700AF520C /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A773F086296F0D9700AF520C /* ProjectModel.swift */; };
+		A7EB443F29783E3D00703A25 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EB443E29783E3D00703A25 /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04845A2129706C5D00180520 /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
 		04845A23297070A200180520 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		04CE85372979952A00BDE404 /* AddFromGitModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFromGitModal.swift; sourceTree = "<group>"; };
+		587D57FA29798CDE0005B0E3 /* TagSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagSelectionView.swift; sourceTree = "<group>"; };
+		587D57FB29798CDE0005B0E3 /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		A733BEC8296EEE8E001347D7 /* ECS Sofa Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ECS Sofa Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A733BECB296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECS_Sofa_ProjectApp.swift; sourceTree = "<group>"; };
 		A733BECD296EEE8E001347D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,6 +40,7 @@
 		A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectModal.swift; sourceTree = "<group>"; };
 		A733BEE3296EF073001347D7 /* ProjectPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPreview.swift; sourceTree = "<group>"; };
 		A773F086296F0D9700AF520C /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		A7EB443E29783E3D00703A25 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +129,9 @@
 			isa = PBXGroup;
 			children = (
 				A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */,
+				04CE85372979952A00BDE404 /* AddFromGitModal.swift */,
+				587D57FA29798CDE0005B0E3 /* TagSelectionView.swift */,
+				587D57FB29798CDE0005B0E3 /* TagView.swift */,
 				04845A23297070A200180520 /* PickerView.swift */,
 				A733BEE3296EF073001347D7 /* ProjectPreview.swift */,
 			);
@@ -131,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				A773F086296F0D9700AF520C /* ProjectModel.swift */,
+				A7EB443E29783E3D00703A25 /* Repository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,7 +225,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		58211A3E2975ACA300244071 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -224,7 +236,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
@@ -236,14 +248,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A733BEDB296EEF84001347D7 /* PortfolioView.swift in Sources */,
+				A7EB443F29783E3D00703A25 /* Repository.swift in Sources */,
 				A733BECE296EEE8E001347D7 /* ContentView.swift in Sources */,
 				04845A24297070A200180520 /* PickerView.swift in Sources */,
 				A773F087296F0D9700AF520C /* ProjectModel.swift in Sources */,
 				A733BEE4296EF073001347D7 /* ProjectPreview.swift in Sources */,
 				A733BECC296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift in Sources */,
+				587D57FC29798CDE0005B0E3 /* TagSelectionView.swift in Sources */,
 				04845A2229706C5D00180520 /* PortfolioViewModel.swift in Sources */,
 				A733BEDF296EEFE0001347D7 /* AddProjectModal.swift in Sources */,
+				04CE85382979952A00BDE404 /* AddFromGitModal.swift in Sources */,
 				A733BEDD296EEFAD001347D7 /* InProgressView.swift in Sources */,
+				587D57FD29798CDE0005B0E3 /* TagView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,8 +394,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -407,8 +423,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
