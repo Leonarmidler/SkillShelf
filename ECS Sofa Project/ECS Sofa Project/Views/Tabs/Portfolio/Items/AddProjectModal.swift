@@ -11,7 +11,7 @@ import PhotosUI
 struct AddProjectModal: View {
     
     @EnvironmentObject var viewModel: PortfolioViewModel
-    @State private var newProject = ProjectModel(title: "", description: "", tags: [])
+    @State public var newProject = ProjectModel(title: "", description: "", tags: [])
     @State var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
     @State var tagViews: [TagView] = []
     @State var isSelectingTag: Bool = false

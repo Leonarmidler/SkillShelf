@@ -10,7 +10,8 @@ import SwiftUI
 struct AddFromGitModal: View {
     
     @EnvironmentObject var viewModel: PortfolioViewModel
-    
+
+    @State var checks: [Bool] = Array(repeating: false, count: 10)
     @State private var userName: String = ""
     
     var body: some View {
@@ -21,30 +22,35 @@ struct AddFromGitModal: View {
                         TextField("Enter GitHub user name", text: $userName)
                     }
                     
-                    Button {
-                        Task {
-                            await viewModel.getRepositories(userName: userName)
+                    HStack{
+                        Spacer()
+                        Button {
+                            Task {
+                                await viewModel.getRepositories(userName: userName)
+                            }
+                        } label: {
+                            Text("Search")
                         }
-                    } label: {
-                        Text("Search")
+                        Spacer()
+                    }
+                    Section("User's repositories") {
+                        ForEach(Array(viewModel.repositories.enumerated()), id: \.offset) { index, repo in
+                            HStack {
+                                Text(repo.name)
+                                Spacer()
+                                Button {
+                                    checks = Array(repeating: false, count: 10)
+                                    checks[index].toggle()
+                                } label: {
+                                    Image(systemName: checks[index] ? "checkmark.circle" : "circle")
+                                        .foregroundColor(Color(UIColor.label))
+                                }
+                                
+                            }
+                        }
                     }
                 }
                 .formStyle(.grouped)
-                Section("User's repositories") {
-                    ForEach(viewModel.repositories) { repo in
-                        HStack {
-                            Text(repo.name)
-                            Spacer()
-                            Button {
-//                                viewModel.repoSelections.firstIndex(where: {$0.0 == repo.name }) = true
-                            } label: {
-//                                Image(systemName: viewModel.repositories[index].isSelected ? "checkmark.circle" : "circle")
-//                                    .foregroundColor(Color(UIColor.label))
-                            }
-                            
-                        }
-                    }
-                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -64,15 +70,12 @@ struct AddFromGitModal: View {
                     }
                 }
             }
-//            .onAppear() {
-//                viewModel.setRepoSelections()
-//            }
         }
     }
 }
 
-struct AddFromGitModal_Previews: PreviewProvider {
-    static var previews: some View {
-        AddFromGitModal()
-    }
-}
+//struct AddFromGitModal_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddFromGitModal()
+//    }
+//}
