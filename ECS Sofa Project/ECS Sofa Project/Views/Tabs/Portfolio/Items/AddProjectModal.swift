@@ -47,7 +47,7 @@ struct AddProjectModal: View {
                                     }
                                 })
                                 .offset(x: 0, y: 3)
-                                LazyVGrid(columns: columns){
+                                LazyVGrid(columns: columns) {
                                     ForEach(tagViews){ tagView in
                                         tagView
                                     }
@@ -60,7 +60,7 @@ struct AddProjectModal: View {
                         Spacer()
                             .listRowBackground(Color.clear)
                         Section("") {
-                            HStack{
+                            HStack {
                               Spacer()
                                 Button(action: {
                                     viewModel.isAddingFromGit = true
@@ -77,9 +77,6 @@ struct AddProjectModal: View {
                         .listRowBackground(Color.clear)
                     }
                     .formStyle(.grouped)
-                }
-                .sheet(isPresented: $viewModel.isAddingFromGit) {
-                    AddFromGitModal()
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -98,6 +95,9 @@ struct AddProjectModal: View {
                             Text("Cancel")
                         }
                     }
+                }
+                .sheet(isPresented: $viewModel.isAddingFromGit) {
+                    AddFromGitModal(newProject: $newProject)
                 }
                 .navigationTitle("Add Project")
                 .navigationBarTitleDisplayMode(.inline)

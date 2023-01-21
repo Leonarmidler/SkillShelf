@@ -65,8 +65,8 @@ struct ProjectView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle("Title")
-                .toolbar(){
-                    ToolbarItem(placement: .navigationBarTrailing){
+                .toolbar() {
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             
                         } label: {

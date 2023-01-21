@@ -9,9 +9,12 @@ import SwiftUI
 
 struct AddFromGitModal: View {
     
+    // Index of the repo
+    @State var repoIndex = 0
+    
     @EnvironmentObject var viewModel: PortfolioViewModel
-
-    @State var checks: [Bool] = Array(repeating: false, count: 10)
+    @Binding var newProject: ProjectModel
+    
     @State private var userName: String = ""
     
     var body: some View {
@@ -33,16 +36,18 @@ struct AddFromGitModal: View {
                         }
                         Spacer()
                     }
+                    
                     Section("User's repositories") {
                         ForEach(Array(viewModel.repositories.enumerated()), id: \.offset) { index, repo in
                             HStack {
                                 Text(repo.name)
                                 Spacer()
                                 Button {
-                                    checks = Array(repeating: false, count: 10)
-                                    checks[index].toggle()
+                                    viewModel.checks = Array(repeating: false, count: viewModel.repositories.count)
+                                    viewModel.checks[index].toggle()
+                                    self.repoIndex = index
                                 } label: {
-                                    Image(systemName: checks[index] ? "checkmark.circle" : "circle")
+                                    Image(systemName: viewModel.checks[index] ? "checkmark.circle" : "circle")
                                         .foregroundColor(Color(UIColor.label))
                                 }
                                 
@@ -55,7 +60,8 @@ struct AddFromGitModal: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        // function that calls another API to retrieve the selected repo
+                        newProject.title = viewModel.repositories[repoIndex].name
+                        newProject.description = viewModel.repositories[repoIndex].description ?? ""
                         viewModel.isAddingFromGit = false
                     } label: {
                         Text("Done")

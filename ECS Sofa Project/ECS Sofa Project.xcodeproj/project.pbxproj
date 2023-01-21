@@ -130,8 +130,8 @@
 		A733BEE2296EF00E001347D7 /* Items */ = {
 			isa = PBXGroup;
 			children = (
-				A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */,
 				5881AF33297ADC970072113C /* ProjectView.swift */,
+				A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */,
 				04CE85372979952A00BDE404 /* AddFromGitModal.swift */,
 				587D57FA29798CDE0005B0E3 /* TagSelectionView.swift */,
 				587D57FB29798CDE0005B0E3 /* TagView.swift */,
