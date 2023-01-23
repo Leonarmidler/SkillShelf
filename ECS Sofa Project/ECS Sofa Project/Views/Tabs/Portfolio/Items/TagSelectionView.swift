@@ -15,40 +15,30 @@ struct TagSelectionView: View {
     //@State var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
     @EnvironmentObject var viewModel: PortfolioViewModel
     @State var newTags: [TagView] = []
-    @State var tagSelections = [(Tags, Bool)]()
-    
+    //@State var tagSelections = [(Tags, Bool)]()
+    @State var checks: [Bool]
     var body: some View {
         NavigationStack {
             ScrollView{
-                ForEach(tagSelections, id:\.0) { item in
-                    HStack{
-                        TagView(name: item.0)
+                ForEach(Array(viewModel.tagList.enumerated()), id: \.offset) { index, tag in
+                    HStack {
+                        TagView(name: tag)
                         Spacer()
-                        if item.1 == true {
-                            Button(action: {
-                                for (index, element) in newTags.enumerated() {
-                                    if element.name == item.0 {
-                                        newTags.remove(at: index)
-                                        tagSelections[tagSelections.firstIndex(where: {$0.0 == item.0})!].1 = false
-                                    }
-                                }
-                            }, label: {
-                                Image(systemName: "checkmark.circle")
-                                    .foregroundColor(Color(UIColor.label))
-                            })
-                        } else {
-                            Button(action: {
-                                newTags.append(TagView(name: item.0))
-                                tagSelections[tagSelections.firstIndex(where: {$0.0 == item.0})!].1 = true
-                            }, label: {
-                                Image(systemName: "circle")
-                                    .foregroundColor(Color(UIColor.label))
-                            })
+                        Button {
+                            if (newTags.firstIndex(where: {$0.name == tag}) == nil) {
+                                newTags.append(TagView(name: tag))
+                            } else {
+                                newTags.removeAll(where: {$0.name == tag})
+                            }
+                            checks[index].toggle()
+                        } label: {
+                            Image(systemName: checks[index] ? "checkmark.circle" : "circle")
+                                .foregroundColor(Color(UIColor.label))
                         }
+                        
                     }
-                    .padding(.vertical)
+                    .padding()
                 }
-                .padding()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -71,19 +61,11 @@ struct TagSelectionView: View {
             .navigationTitle("Select tags")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear(){
+                for tagView in tagViews {
+                    let index = viewModel.tagList.firstIndex(of: tagView.name)
+                    checks[index!] = true
+                }
                 newTags = tagViews
-                for tag in viewModel.tagList {
-                    tagSelections.append((tag, false))
-                }
-                for selectedTag in tagViews {
-                    for tag in viewModel.tagList {
-                        if tag == selectedTag.name {
-                            if let index = tagSelections.firstIndex(where: {$0.0 == selectedTag.name}) {
-                                tagSelections[index].1 = true
-                            }
-                        }
-                    }
-                }
             }
         }
         
@@ -92,7 +74,8 @@ struct TagSelectionView: View {
 
 struct TagSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        TagSelectionView(isSelectingTag: .constant(true), tagViews: .constant([TagView(name: .SwiftUI)]))
+        TagSelectionView(isSelectingTag: .constant(true), tagViews: .constant([TagView(name: .SwiftUI)]), checks: Array(repeating: false, count: PortfolioViewModel().tagList.count))
+            .environmentObject(PortfolioViewModel())
             .preferredColorScheme(.dark)
     }
 }

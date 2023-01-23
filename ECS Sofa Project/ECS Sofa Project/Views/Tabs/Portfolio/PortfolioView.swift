@@ -29,19 +29,19 @@ struct PortfolioView: View {
                         .padding()
                         Spacer()
                     }
-                    .toolbar {
-                        Button(action: {
-                            viewModel.isAddingProject = true
-                        }, label: {
-                            Image(systemName: "plus")
-                        })
-                    }
-                    .sheet(isPresented: $viewModel.isAddingProject) {
-                        AddProjectModal()
-                    }
-                    .environmentObject(viewModel)
                 }
             }
+            .toolbar {
+                Button(action: {
+                    viewModel.isAddingProject = true
+                }, label: {
+                    Image(systemName: "plus")
+                })
+            }
+            .sheet(isPresented: $viewModel.isAddingProject) {
+                AddProjectModal()
+            }
+            .environmentObject(viewModel)
         }
     }
 }

@@ -12,7 +12,7 @@ struct AddProjectModal: View {
     
     @EnvironmentObject var viewModel: PortfolioViewModel
     @State public var newProject = ProjectModel(title: "", description: "", tags: [])
-    @State var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
+    //@State var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
     @State var tagViews: [TagView] = []
     @State var isSelectingTag: Bool = false
     
@@ -54,7 +54,7 @@ struct AddProjectModal: View {
                                 }
                             }
                             .sheet(isPresented: $isSelectingTag){
-                                TagSelectionView(isSelectingTag: $isSelectingTag, tagViews: $tagViews)
+                                TagSelectionView(isSelectingTag: $isSelectingTag, tagViews: $tagViews, checks: Array(repeating: false, count: viewModel.tagList.count))
                             }
                         }
                         Spacer()
@@ -81,6 +81,11 @@ struct AddProjectModal: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
+                            var tempTags: [Tags] = []
+                            for tagView in tagViews {
+                                tempTags.append(tagView.name)
+                            }
+                            newProject.tags = tempTags
                             viewModel.addProject(newProject: newProject)
                             viewModel.isAddingProject = false
                         } label: {
@@ -109,6 +114,7 @@ struct AddProjectModal: View {
 struct AddProjectModal_Previews: PreviewProvider {
     static var previews: some View {
         AddProjectModal()
+            .environmentObject(PortfolioViewModel())
             .preferredColorScheme(.dark)
     }
 }
