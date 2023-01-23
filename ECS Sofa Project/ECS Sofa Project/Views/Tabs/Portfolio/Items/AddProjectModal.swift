@@ -61,17 +61,17 @@ struct AddProjectModal: View {
                             .listRowBackground(Color.clear)
                         Section("") {
                             HStack {
-                              Spacer()
-                                Button(action: {
+                                Spacer()
+                                Button {
                                     viewModel.isAddingFromGit = true
-                                }, label: {
+                                } label: {
                                     Text("Retrieve from GitHub")
                                         .frame(width: geo.size.width * 0.6, height: geo.size.height * 0.07)
                                         .background(Color.blue)
                                         .foregroundColor(.white)
                                         .cornerRadius(16)
-                                })
-                              Spacer()
+                                }
+                                Spacer()
                             }
                         }
                         .listRowBackground(Color.clear)
@@ -96,12 +96,12 @@ struct AddProjectModal: View {
                         }
                     }
                 }
-                .sheet(isPresented: $viewModel.isAddingFromGit) {
-                    AddFromGitModal(newProject: $newProject)
-                }
                 .navigationTitle("Add Project")
                 .navigationBarTitleDisplayMode(.inline)
             }
+        }
+        .sheet(isPresented: $viewModel.isAddingFromGit) {
+            AddFromGitModal(newProject: $newProject)
         }
     }
 }

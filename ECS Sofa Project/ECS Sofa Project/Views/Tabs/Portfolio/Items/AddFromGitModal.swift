@@ -19,7 +19,7 @@ struct AddFromGitModal: View {
             VStack {
                 Form {
                     Section("GitHub user") {
-                        TextField("Enter GitHub user name", text: $userName)
+                        TextField("Enter GitHub user name", text: $userName)                        
                     }
                     
                     HStack{
