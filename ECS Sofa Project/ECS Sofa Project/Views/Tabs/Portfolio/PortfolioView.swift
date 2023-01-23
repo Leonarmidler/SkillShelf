@@ -13,18 +13,23 @@ struct PortfolioView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                LazyVGrid(columns: columns) {
-                    ForEach(viewModel.projectArray) { project in
-                        NavigationLink(destination: {
-                        }, label: {
-                            ProjectPreview(project: project)
-                        })
+            GeometryReader { geo in
+                ScrollView {
+                    VStack {
+                        LazyVGrid(columns: columns) {
+                            ForEach(viewModel.projectArray) { project in
+                                NavigationLink(destination: {
+                                    ProjectView(project: project)
+                                }, label: {
+                                    ProjectPreview(project: project, height: geo.size.width * 0.3, radius: 12)
+                                })
+                            }
+                            .navigationTitle("Portfolio")
+                        }
+                        .padding()
+                        Spacer()
                     }
-                    .navigationTitle("Portfolio")
                 }
-                .padding()
-                Spacer()
             }
             .toolbar {
                 Button(action: {

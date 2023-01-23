@@ -12,6 +12,7 @@
 		04CE85382979952A00BDE404 /* AddFromGitModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE85372979952A00BDE404 /* AddFromGitModal.swift */; };
 		587D57FC29798CDE0005B0E3 /* TagSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D57FA29798CDE0005B0E3 /* TagSelectionView.swift */; };
 		587D57FD29798CDE0005B0E3 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D57FB29798CDE0005B0E3 /* TagView.swift */; };
+		5881AF34297ADC970072113C /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5881AF33297ADC970072113C /* ProjectView.swift */; };
 		A733BECC296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BECB296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift */; };
 		A733BECE296EEE8E001347D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BECD296EEE8E001347D7 /* ContentView.swift */; };
 		A733BED0296EEE8F001347D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A733BECF296EEE8F001347D7 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		04CE85372979952A00BDE404 /* AddFromGitModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFromGitModal.swift; sourceTree = "<group>"; };
 		587D57FA29798CDE0005B0E3 /* TagSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagSelectionView.swift; sourceTree = "<group>"; };
 		587D57FB29798CDE0005B0E3 /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		5881AF33297ADC970072113C /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		A733BEC8296EEE8E001347D7 /* ECS Sofa Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ECS Sofa Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A733BECB296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECS_Sofa_ProjectApp.swift; sourceTree = "<group>"; };
 		A733BECD296EEE8E001347D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		A733BEE2296EF00E001347D7 /* Items */ = {
 			isa = PBXGroup;
 			children = (
+				5881AF33297ADC970072113C /* ProjectView.swift */,
 				A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */,
 				04CE85372979952A00BDE404 /* AddFromGitModal.swift */,
 				587D57FA29798CDE0005B0E3 /* TagSelectionView.swift */,
@@ -251,6 +254,7 @@
 				A7EB443F29783E3D00703A25 /* Repository.swift in Sources */,
 				A733BECE296EEE8E001347D7 /* ContentView.swift in Sources */,
 				04845A24297070A200180520 /* PickerView.swift in Sources */,
+				5881AF34297ADC970072113C /* ProjectView.swift in Sources */,
 				A773F087296F0D9700AF520C /* ProjectModel.swift in Sources */,
 				A733BEE4296EF073001347D7 /* ProjectPreview.swift in Sources */,
 				A733BECC296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift in Sources */,

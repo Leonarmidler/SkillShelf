@@ -12,7 +12,7 @@ struct AddProjectModal: View {
     
     @EnvironmentObject var viewModel: PortfolioViewModel
     @State public var newProject = ProjectModel(title: "", description: "", tags: [])
-    @State var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
+    //@State var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
     @State var tagViews: [TagView] = []
     @State var isSelectingTag: Bool = false
     
@@ -47,43 +47,45 @@ struct AddProjectModal: View {
                                     }
                                 })
                                 .offset(x: 0, y: 3)
-                                LazyVGrid(columns: columns){
+                                LazyVGrid(columns: columns) {
                                     ForEach(tagViews){ tagView in
                                         tagView
                                     }
                                 }
                             }
                             .sheet(isPresented: $isSelectingTag){
-                                TagSelectionView(isSelectingTag: $isSelectingTag, tagViews: $tagViews)
+                                TagSelectionView(isSelectingTag: $isSelectingTag, tagViews: $tagViews, checks: Array(repeating: false, count: viewModel.tagList.count))
                             }
                         }
                         Spacer()
                             .listRowBackground(Color.clear)
                         Section("") {
-                            HStack{
-                              Spacer()
-                                Button(action: {
+                            HStack {
+                                Spacer()
+                                Button {
                                     viewModel.isAddingFromGit = true
-                                }, label: {
+                                } label: {
                                     Text("Retrieve from GitHub")
                                         .frame(width: geo.size.width * 0.6, height: geo.size.height * 0.07)
                                         .background(Color.blue)
                                         .foregroundColor(.white)
                                         .cornerRadius(16)
-                                })
-                              Spacer()
+                                }
+                                Spacer()
                             }
                         }
                         .listRowBackground(Color.clear)
                     }
                     .formStyle(.grouped)
                 }
-                .sheet(isPresented: $viewModel.isAddingFromGit) {
-                    AddFromGitModal()
-                }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
+                            var tempTags: [Tags] = []
+                            for tagView in tagViews {
+                                tempTags.append(tagView.name)
+                            }
+                            newProject.tags = tempTags
                             viewModel.addProject(newProject: newProject)
                             viewModel.isAddingProject = false
                         } label: {
@@ -103,12 +105,16 @@ struct AddProjectModal: View {
                 .navigationBarTitleDisplayMode(.inline)
             }
         }
+        .sheet(isPresented: $viewModel.isAddingFromGit) {
+            AddFromGitModal(newProject: $newProject)
+        }
     }
 }
 
 struct AddProjectModal_Previews: PreviewProvider {
     static var previews: some View {
         AddProjectModal()
+            .environmentObject(PortfolioViewModel())
             .preferredColorScheme(.dark)
     }
 }

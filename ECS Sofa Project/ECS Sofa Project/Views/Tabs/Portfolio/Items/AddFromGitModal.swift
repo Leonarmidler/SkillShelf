@@ -10,8 +10,8 @@ import SwiftUI
 struct AddFromGitModal: View {
     
     @EnvironmentObject var viewModel: PortfolioViewModel
-
-    @State var checks: [Bool] = Array(repeating: false, count: 10)
+    @Binding var newProject: ProjectModel
+    
     @State private var userName: String = ""
     
     var body: some View {
@@ -19,7 +19,7 @@ struct AddFromGitModal: View {
             VStack {
                 Form {
                     Section("GitHub user") {
-                        TextField("Enter GitHub user name", text: $userName)
+                        TextField("Enter GitHub user name", text: $userName)                        
                     }
                     
                     HStack{
@@ -33,16 +33,21 @@ struct AddFromGitModal: View {
                         }
                         Spacer()
                     }
+                    
                     Section("User's repositories") {
                         ForEach(Array(viewModel.repositories.enumerated()), id: \.offset) { index, repo in
                             HStack {
                                 Text(repo.name)
                                 Spacer()
                                 Button {
-                                    checks = Array(repeating: false, count: 10)
-                                    checks[index].toggle()
+                                    viewModel.checks = Array(repeating: false, count: viewModel.repositories.count)
+                                    viewModel.checks[index].toggle()
+                                    
+                                    // Here it saves the name and the description of the chosen repo
+                                    newProject.title = viewModel.repositories[index].name
+                                    newProject.description = viewModel.repositories[index].description ?? ""
                                 } label: {
-                                    Image(systemName: checks[index] ? "checkmark.circle" : "circle")
+                                    Image(systemName: viewModel.checks[index] ? "checkmark.circle" : "circle")
                                         .foregroundColor(Color(UIColor.label))
                                 }
                                 
@@ -55,7 +60,6 @@ struct AddFromGitModal: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        // function that calls another API to retrieve the selected repo
                         viewModel.isAddingFromGit = false
                     } label: {
                         Text("Done")

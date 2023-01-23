@@ -22,6 +22,7 @@ enum Tags {
 final class PortfolioViewModel: ObservableObject {
     // API VARIABLES
     @Published var repositories: [Repository] = []
+    @Published var checks: [Bool] = []
     let decoder = JSONDecoder()
     
     @Published var isAddingProject = false
@@ -43,8 +44,8 @@ final class PortfolioViewModel: ObservableObject {
             let url = URL(string: "https://api.github.com/users/\(userName)/repos?type=all")
             let request = URLRequest(url: url!)
             let (data, _) = try await URLSession.shared.data(for: request)
-            
             self.repositories = try decoder.decode([Repository].self, from: data)
+            checks = Array(repeating: false, count: self.repositories.count)
         } catch {
             print("ERROR: \(error.localizedDescription)")
         }
