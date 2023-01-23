@@ -15,7 +15,7 @@ struct ProjectPreview: View {
         RoundedRectangle(cornerRadius: radius)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: height)
             .overlay {
-                Image(uiImage: project.image!)
+                Image(uiImage: (project.image ?? UIImage(named: "noImage"))!)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: height)
@@ -26,7 +26,7 @@ struct ProjectPreview: View {
                         Text(project.title)
                             .font(.caption)
                             .fontWeight(.semibold)
-                            .foregroundColor(.white)
+                            .foregroundColor(.accentColor)
                         Spacer()
                     }
                 }

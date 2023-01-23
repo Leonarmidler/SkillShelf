@@ -9,9 +9,6 @@ import SwiftUI
 
 struct AddFromGitModal: View {
     
-    // Index of the repo
-    @State var repoIndex = 0
-    
     @EnvironmentObject var viewModel: PortfolioViewModel
     @Binding var newProject: ProjectModel
     
@@ -45,7 +42,10 @@ struct AddFromGitModal: View {
                                 Button {
                                     viewModel.checks = Array(repeating: false, count: viewModel.repositories.count)
                                     viewModel.checks[index].toggle()
-                                    self.repoIndex = index
+                                    
+                                    // Here it saves the name and the description of the chosen repo
+                                    newProject.title = viewModel.repositories[index].name
+                                    newProject.description = viewModel.repositories[index].description ?? ""
                                 } label: {
                                     Image(systemName: viewModel.checks[index] ? "checkmark.circle" : "circle")
                                         .foregroundColor(Color(UIColor.label))
@@ -60,8 +60,6 @@ struct AddFromGitModal: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        newProject.title = viewModel.repositories[repoIndex].name
-                        newProject.description = viewModel.repositories[repoIndex].description ?? ""
                         viewModel.isAddingFromGit = false
                     } label: {
                         Text("Done")

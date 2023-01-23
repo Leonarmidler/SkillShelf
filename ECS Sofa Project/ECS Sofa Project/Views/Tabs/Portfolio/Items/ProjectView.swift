@@ -15,7 +15,7 @@ struct ProjectView: View {
             GeometryReader { geo in
                 ScrollView {
                     VStack (spacing: 30){
-                        Image(uiImage: (project.image ?? UIImage(named: "Project"))!)
+                        Image(uiImage: (project.image ?? UIImage(named: "noImage"))!)
                             .resizable()
                             .scaledToFit()
                             .cornerRadius(15)
