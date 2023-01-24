@@ -5,5 +5,14 @@
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="summary" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="projectTag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TagEntity"/>
+    </entity>
+    <entity name="TagEntity" representedClassName="TagEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="isCoreData" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isCoreML" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isPhotosUI" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isSwifUI" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isUiKit" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectEntity"/>
     </entity>
 </model>

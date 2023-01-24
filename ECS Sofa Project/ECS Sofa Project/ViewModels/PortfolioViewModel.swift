@@ -29,16 +29,6 @@ final class PortfolioViewModel: ObservableObject {
     @Published var isAddingFromGit = false
     @Published var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
 
-    @Published var projectArray = [
-        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", summary: "Lorem ipsum dolor sit amet", tags: []),
-        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", summary: "Lorem ipsum dolor sit amet", tags: []),
-        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", summary: "Lorem ipsum dolor sit amet", tags: [])
-    ]
-    
-    func addProject(newProject: ProjectModel) {
-        projectArray.append(newProject)
-    }
-    
     func getRepositories(userName: String) async {
         do {
             let url = URL(string: "https://api.github.com/users/\(userName)/repos?type=all")
