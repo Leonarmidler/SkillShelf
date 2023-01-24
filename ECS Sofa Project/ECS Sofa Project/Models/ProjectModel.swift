@@ -13,7 +13,7 @@ struct ProjectModel: Identifiable {
     
     var image: UIImage?
     var title: String
-    var description: String
+    var summary: String
     var tags: [Tags]
     
 }

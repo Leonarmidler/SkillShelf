@@ -11,7 +11,8 @@ import PhotosUI
 struct AddProjectModal: View {
     
     @EnvironmentObject var viewModel: PortfolioViewModel
-    @State public var newProject = ProjectModel(title: "", description: "", tags: [])
+    @EnvironmentObject var dataController: DataController
+    @State public var newProject = ProjectModel(title: "", summary: "", tags: [])
     //@State var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
     @State var tagViews: [TagView] = []
     @State var isSelectingTag: Bool = false
@@ -32,7 +33,7 @@ struct AddProjectModal: View {
                             TextField("Enter project title", text: $newProject.title)
                         }
                         Section("Description") {
-                            TextField("Enter project description", text: $newProject.description)
+                            TextField("Enter project description", text: $newProject.summary)
                         }
                         Section("Tags") {
                             VStack{
@@ -81,13 +82,14 @@ struct AddProjectModal: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            var tempTags: [Tags] = []
-                            for tagView in tagViews {
-                                tempTags.append(tagView.name)
-                            }
-                            newProject.tags = tempTags
-                            viewModel.addProject(newProject: newProject)
+//                            var tempTags: [Tags] = []
+//                            for tagView in tagViews {
+//                                tempTags.append(tagView.name)
+//                            }
+//                            newProject.tags = tempTags
+
                             viewModel.isAddingProject = false
+                            dataController.addProject(project: newProject)
                         } label: {
                             Text("Add")
                         }

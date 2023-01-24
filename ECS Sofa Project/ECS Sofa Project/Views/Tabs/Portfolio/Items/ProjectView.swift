@@ -37,7 +37,7 @@ struct ProjectView: View {
                                 Text("DESCRIPTION")
                                     .fontWeight(.light)
                                     .font(.system(.headline, design: .rounded))
-                                Text(project.description)
+                                Text(project.summary)
                                     .font(.title2)
                             }
                             Spacer()
@@ -82,7 +82,7 @@ struct ProjectView: View {
 
 struct ProjectView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectView(project: ProjectModel(title: "Ciao", description: "Lorem ipsum", tags: [.SwiftUI, .UIKit, .CoreData, .PhotosUI]))
+        ProjectView(project: ProjectModel(title: "Ciao", summary: "Lorem ipsum", tags: [.SwiftUI, .UIKit, .CoreData, .PhotosUI]))
             .preferredColorScheme(.dark)
     }
 }

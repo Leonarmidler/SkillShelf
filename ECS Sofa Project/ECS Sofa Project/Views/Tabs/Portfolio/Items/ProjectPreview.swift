@@ -47,7 +47,7 @@ struct ProjectPreview: View {
 
 struct ProjectPreview_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectPreview(project: ProjectModel(image: UIImage(named: "Project"), title: "Title", description: "Description", tags: [.SwiftUI, .UIKit]), height: 120, radius: 12)
+        ProjectPreview(project: ProjectModel(image: UIImage(named: "Project"), title: "Title", summary: "Description", tags: [.SwiftUI, .UIKit]), height: 120, radius: 12)
     }
 }
 

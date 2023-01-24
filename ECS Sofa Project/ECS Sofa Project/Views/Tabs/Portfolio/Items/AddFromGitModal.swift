@@ -45,7 +45,7 @@ struct AddFromGitModal: View {
                                     
                                     // Here it saves the name and the description of the chosen repo
                                     newProject.title = viewModel.repositories[index].name
-                                    newProject.description = viewModel.repositories[index].description ?? ""
+                                    newProject.summary = viewModel.repositories[index].description ?? ""
                                 } label: {
                                     Image(systemName: viewModel.checks[index] ? "checkmark.circle" : "circle")
                                         .foregroundColor(Color(UIColor.label))

@@ -30,9 +30,9 @@ final class PortfolioViewModel: ObservableObject {
     @Published var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
 
     @Published var projectArray = [
-        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", description: "Lorem ipsum dolor sit amet", tags: []),
-        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", description: "Lorem ipsum dolor sit amet", tags: []),
-        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", description: "Lorem ipsum dolor sit amet", tags: [])
+        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", summary: "Lorem ipsum dolor sit amet", tags: []),
+        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", summary: "Lorem ipsum dolor sit amet", tags: []),
+        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", summary: "Lorem ipsum dolor sit amet", tags: [])
     ]
     
     func addProject(newProject: ProjectModel) {

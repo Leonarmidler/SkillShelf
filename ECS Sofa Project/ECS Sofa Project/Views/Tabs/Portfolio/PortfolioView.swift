@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PortfolioView: View {
     @StateObject private var viewModel = PortfolioViewModel()
+    @StateObject private var dataController = DataController()
+    @State private var showingAlert: Bool = false
     let columns: [GridItem] = [GridItem(), GridItem()]
     
     var body: some View {
@@ -17,20 +19,38 @@ struct PortfolioView: View {
                 ScrollView {
                     VStack {
                         LazyVGrid(columns: columns) {
-                            ForEach(viewModel.projectArray) { project in
+                            ForEach(dataController.savedProjects) { project in
+                                let image = UIImage(data: project.image!)
+                                let newProject = ProjectModel(image: image!, title: project.title!, summary: project.summary!, tags: [])
                                 NavigationLink(destination: {
-                                    ProjectView(project: project)
+                                    ProjectView(project: newProject)
                                 }, label: {
-                                    ProjectPreview(project: project, height: geo.size.width * 0.3, radius: 12)
+                            ProjectPreview(project: newProject, height: geo.size.width * 0.3, radius: 12)
                                 })
+                                .contextMenu {
+                                    Button(role: .destructive) {
+                                        showingAlert = true
+                                    } label: {
+                                        Image(systemName: "trash")
+                                        Text("Delete Project")
+                                    }
+                                }
+                                .alert("Are you sure you want to delete this?", isPresented: $showingAlert) {
+                                    Button("Delete", role: .destructive) {
+                                        dataController.deleteProject(project: project)
+                                    }
+                                    Button("Cancel", role: .cancel) { }
+                                } message: {
+                                    Text("There is no undo.")
+                                }
                             }
-                            .navigationTitle("Portfolio")
                         }
                         .padding()
                         Spacer()
                     }
                 }
             }
+            .navigationTitle("Portfolio")
             .toolbar {
                 Button(action: {
                     viewModel.isAddingProject = true
@@ -42,6 +62,7 @@ struct PortfolioView: View {
                 AddProjectModal()
             }
             .environmentObject(viewModel)
+            .environmentObject(dataController)
         }
     }
 }
