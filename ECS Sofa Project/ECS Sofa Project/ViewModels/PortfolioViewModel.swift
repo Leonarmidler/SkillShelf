@@ -25,6 +25,7 @@ final class PortfolioViewModel: ObservableObject {
     @Published var checks: [Bool] = []
     let decoder = JSONDecoder()
     
+    @Published var isEditing = false
     @Published var isAddingProject = false
     @Published var isAddingFromGit = false
     @Published var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]

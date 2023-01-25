@@ -27,9 +27,15 @@ struct PickerView: View {
                                 .resizable()
                                 .scaledToFill()
                         } else {
-                            Image(systemName: "photo.on.rectangle")
-                                .font(.system(size: 100))
-                                .foregroundColor(.gray)
+                            if (newProject.image != nil) {
+                                Image(uiImage: newProject.image!)
+                                    .resizable()
+                                    .scaledToFill()
+                            } else {
+                                Image(systemName: "photo.on.rectangle")
+                                    .font(.system(size: 100))
+                                    .foregroundColor(.gray)
+                            }
                         }
                         
                         Spacer()

@@ -35,10 +35,9 @@ final class DataController: ObservableObject {
         }
     }
 
-    // test function
     func addProject(project: ProjectModel) {
         let newProject = ProjectEntity(context: container.viewContext)
-        newProject.id = project.id
+        newProject.idCD = project.id
         newProject.title = project.title
         newProject.summary = project.summary
         if project.image == nil {
@@ -49,10 +48,24 @@ final class DataController: ObservableObject {
         saveData()
     }
     
+    func editProject(idProject: UUID, editedProject: ProjectModel){
+        if let index = savedProjects.firstIndex(where: {idProject == $0.idCD}) {
+            
+            savedProjects[index].title = editedProject.title
+            savedProjects[index].summary = editedProject.summary
+            savedProjects[index].image = editedProject.image?.jpegData(compressionQuality: 50)
+            
+            saveData()
+        }
+    }
+    
     func deleteProject(project: ProjectEntity) {
-        container.viewContext.delete(project)
-        
-        saveData()
+        print(project)
+        if let index = savedProjects.firstIndex(where: {project.id == $0.id}) {
+            container.viewContext.delete(savedProjects[index])
+            
+            saveData()
+        }
     }
 
     func deleteAll() {

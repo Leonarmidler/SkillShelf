@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ProjectModel: Identifiable {
     
-    let id = UUID()
-    
+    let id: UUID
     var image: UIImage?
     var title: String
     var summary: String
     var tags: [Tags]
     
 }
+

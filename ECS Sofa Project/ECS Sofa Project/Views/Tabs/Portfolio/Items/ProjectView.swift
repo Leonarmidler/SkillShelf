@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProjectView: View {
+    @EnvironmentObject var viewModel: PortfolioViewModel
+    
     var project: ProjectModel
     let columns: [GridItem] = [GridItem(), GridItem(), GridItem()]
     var body: some View {
@@ -68,7 +70,7 @@ struct ProjectView: View {
                 .toolbar() {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            
+                            viewModel.isEditing = true
                         } label: {
                             Text("Edit")
                         }
@@ -77,12 +79,15 @@ struct ProjectView: View {
                 
             }
         }
+        .sheet(isPresented: $viewModel.isEditing) {
+            AddProjectModal(idProject: project.id, newProject: project)
+        }
     }
 }
 
 struct ProjectView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectView(project: ProjectModel(title: "Ciao", summary: "Lorem ipsum", tags: [.SwiftUI, .UIKit, .CoreData, .PhotosUI]))
+        ProjectView(project: ProjectModel(id: UUID(), title: "Ciao", summary: "Lorem ipsum", tags: [.SwiftUI, .UIKit, .CoreData, .PhotosUI]))
             .preferredColorScheme(.dark)
     }
 }

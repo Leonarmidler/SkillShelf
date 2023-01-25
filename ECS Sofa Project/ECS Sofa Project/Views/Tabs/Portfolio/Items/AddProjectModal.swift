@@ -9,10 +9,12 @@ import SwiftUI
 import PhotosUI
 
 struct AddProjectModal: View {
+    @State var idProject: UUID
     
     @EnvironmentObject var viewModel: PortfolioViewModel
     @EnvironmentObject var dataController: DataController
-    @State public var newProject = ProjectModel(title: "", summary: "", tags: [])
+    @State public var newProject: ProjectModel
+
     //@State var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
     @State var tagViews: [TagView] = []
     @State var isSelectingTag: Bool = false
@@ -60,50 +62,63 @@ struct AddProjectModal: View {
                         }
                         Spacer()
                             .listRowBackground(Color.clear)
-                        Section("") {
-                            HStack {
-                                Spacer()
-                                Button {
-                                    viewModel.isAddingFromGit = true
-                                } label: {
-                                    Text("Retrieve from GitHub")
-                                        .frame(width: geo.size.width * 0.6, height: geo.size.height * 0.07)
-                                        .background(Color.blue)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(16)
+                        if viewModel.isAddingProject {
+                            Section("") {
+                                HStack {
+                                    Spacer()
+                                    Button {
+                                        viewModel.isAddingFromGit = true
+                                    } label: {
+                                        Text("Retrieve from GitHub")
+                                            .frame(width: geo.size.width * 0.6, height: geo.size.height * 0.07)
+                                            .background(Color.blue)
+                                            .foregroundColor(.white)
+                                            .cornerRadius(16)
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
                             }
+                            .listRowBackground(Color.clear)
                         }
-                        .listRowBackground(Color.clear)
                     }
                     .formStyle(.grouped)
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-//                            var tempTags: [Tags] = []
-//                            for tagView in tagViews {
-//                                tempTags.append(tagView.name)
-//                            }
-//                            newProject.tags = tempTags
-
-                            viewModel.isAddingProject = false
-                            dataController.addProject(project: newProject)
-                        } label: {
-                            Text("Add")
+                        if !viewModel.isEditing{
+                            Button {
+                                //                            var tempTags: [Tags] = []
+                                //                            for tagView in tagViews {
+                                //                                tempTags.append(tagView.name)
+                                //                            }
+                                //                            newProject.tags = tempTags
+                                
+                                viewModel.isAddingProject = false
+                                dataController.addProject(project: newProject)
+                            } label: {
+                                Text("Add")
+                            }
+                        } else {
+                            Button {
+                                viewModel.isEditing = false
+                                dataController.editProject(idProject: idProject, editedProject: newProject)
+                            } label: {
+                                Text("Done")
+                            }
                         }
                         
                     }
                     ToolbarItem(placement: .cancellationAction) {
                         Button {
                             viewModel.isAddingProject = false
+                            viewModel.isEditing = false
+                            
                         } label: {
                             Text("Cancel")
                         }
                     }
                 }
-                .navigationTitle("Add Project")
+                .navigationTitle(viewModel.isEditing ? "Edit Project" : "Add Project")
                 .navigationBarTitleDisplayMode(.inline)
             }
         }
@@ -115,10 +130,8 @@ struct AddProjectModal: View {
 
 struct AddProjectModal_Previews: PreviewProvider {
     static var previews: some View {
-        AddProjectModal()
+        AddProjectModal(idProject: UUID(), newProject: ProjectModel(id: UUID(), title: "", summary: "", tags: []))
             .environmentObject(PortfolioViewModel())
             .preferredColorScheme(.dark)
     }
 }
-
-
