@@ -45,6 +45,11 @@ final class DataController: ObservableObject {
         } else {
             newProject.image = project.image?.jpegData(compressionQuality: 50)
         }
+        for tag in project.tags {
+            var tempTag = TagEntity(context: container.viewContext)
+            tempTag.name = String(describing: tag)
+            tempTag.addToProject(newProject)
+        }
         saveData()
     }
     
@@ -60,10 +65,8 @@ final class DataController: ObservableObject {
     }
     
     func deleteProject(project: ProjectEntity) {
-        print(project)
-        if let index = savedProjects.firstIndex(where: {project.id == $0.id}) {
+        if let index = savedProjects.firstIndex(where: {project.idCD == $0.idCD}) {
             container.viewContext.delete(savedProjects[index])
-            
             saveData()
         }
     }

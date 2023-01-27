@@ -9,12 +9,22 @@ import Foundation
 import PhotosUI
 import SwiftUI
 
-enum Tags {
-    case SwiftUI
-    case UIKit
-    case CoreML
-    case CoreData
-    case PhotosUI
+enum Tags: String, CaseIterable {
+    case SwiftUI,
+         UIKit,
+         CoreML,
+         CoreData,
+         PhotosUI
+    
+//    var name: String {
+//        switch self {
+//            case .SwiftUI: return "SwiftUI"
+//            case .UIKit: return "UIKit"
+//            case .CoreML: return "CoreML"
+//            case .CoreData: return "CoreData"
+//            case .PhotosUI: return "PhotosUI"
+//        }
+//    }
 }
 
 
@@ -29,7 +39,8 @@ final class PortfolioViewModel: ObservableObject {
     @Published var isAddingProject = false
     @Published var isAddingFromGit = false
     @Published var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
-
+    var tags: Tags = .SwiftUI
+    
     func getRepositories(userName: String) async {
         do {
             let url = URL(string: "https://api.github.com/users/\(userName)/repos?type=all")
@@ -40,5 +51,13 @@ final class PortfolioViewModel: ObservableObject {
         } catch {
             print("ERROR: \(error.localizedDescription)")
         }
+    }
+    
+    func getTags(project: ProjectEntity){
+        
+    }
+    
+    func setTags(project: ProjectEntity){
+        
     }
 }

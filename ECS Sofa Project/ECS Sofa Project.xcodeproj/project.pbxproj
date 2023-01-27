@@ -24,6 +24,10 @@
 		A733BEDF296EEFE0001347D7 /* AddProjectModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */; };
 		A733BEE4296EF073001347D7 /* ProjectPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733BEE3296EF073001347D7 /* ProjectPreview.swift */; };
 		A773F087296F0D9700AF520C /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A773F086296F0D9700AF520C /* ProjectModel.swift */; };
+		A7DCFD162983DF6A0067FEE0 /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCFD122983DF6A0067FEE0 /* TagEntity+CoreDataClass.swift */; };
+		A7DCFD172983DF6A0067FEE0 /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCFD132983DF6A0067FEE0 /* TagEntity+CoreDataProperties.swift */; };
+		A7DCFD182983DF6A0067FEE0 /* ProjectEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCFD142983DF6A0067FEE0 /* ProjectEntity+CoreDataClass.swift */; };
+		A7DCFD192983DF6A0067FEE0 /* ProjectEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCFD152983DF6A0067FEE0 /* ProjectEntity+CoreDataProperties.swift */; };
 		A7EB443F29783E3D00703A25 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EB443E29783E3D00703A25 /* Repository.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +50,10 @@
 		A733BEDE296EEFE0001347D7 /* AddProjectModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectModal.swift; sourceTree = "<group>"; };
 		A733BEE3296EF073001347D7 /* ProjectPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPreview.swift; sourceTree = "<group>"; };
 		A773F086296F0D9700AF520C /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		A7DCFD122983DF6A0067FEE0 /* TagEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A7DCFD132983DF6A0067FEE0 /* TagEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A7DCFD142983DF6A0067FEE0 /* ProjectEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A7DCFD152983DF6A0067FEE0 /* ProjectEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A7EB443E29783E3D00703A25 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +80,10 @@
 		A733BEBF296EEE8E001347D7 = {
 			isa = PBXGroup;
 			children = (
+				A7DCFD122983DF6A0067FEE0 /* TagEntity+CoreDataClass.swift */,
+				A7DCFD132983DF6A0067FEE0 /* TagEntity+CoreDataProperties.swift */,
+				A7DCFD142983DF6A0067FEE0 /* ProjectEntity+CoreDataClass.swift */,
+				A7DCFD152983DF6A0067FEE0 /* ProjectEntity+CoreDataProperties.swift */,
 				A733BECA296EEE8E001347D7 /* ECS Sofa Project */,
 				A733BEC9296EEE8E001347D7 /* Products */,
 			);
@@ -259,6 +271,8 @@
 				A733BEDB296EEF84001347D7 /* PortfolioView.swift in Sources */,
 				A7EB443F29783E3D00703A25 /* Repository.swift in Sources */,
 				A733BECE296EEE8E001347D7 /* ContentView.swift in Sources */,
+				A7DCFD172983DF6A0067FEE0 /* TagEntity+CoreDataProperties.swift in Sources */,
+				A7DCFD182983DF6A0067FEE0 /* ProjectEntity+CoreDataClass.swift in Sources */,
 				04845A24297070A200180520 /* PickerView.swift in Sources */,
 				5881AF34297ADC970072113C /* ProjectView.swift in Sources */,
 				A773F087296F0D9700AF520C /* ProjectModel.swift in Sources */,
@@ -270,8 +284,10 @@
 				04D4DDB829801F4B00E607D3 /* DataController.swift in Sources */,
 				A733BEDF296EEFE0001347D7 /* AddProjectModal.swift in Sources */,
 				04CE85382979952A00BDE404 /* AddFromGitModal.swift in Sources */,
+				A7DCFD192983DF6A0067FEE0 /* ProjectEntity+CoreDataProperties.swift in Sources */,
 				A733BEDD296EEFAD001347D7 /* InProgressView.swift in Sources */,
 				587D57FD29798CDE0005B0E3 /* TagView.swift in Sources */,
+				A7DCFD162983DF6A0067FEE0 /* TagEntity+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

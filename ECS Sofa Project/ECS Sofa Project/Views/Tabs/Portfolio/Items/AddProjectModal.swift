@@ -87,12 +87,11 @@ struct AddProjectModal: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         if !viewModel.isEditing{
                             Button {
-                                //                            var tempTags: [Tags] = []
-                                //                            for tagView in tagViews {
-                                //                                tempTags.append(tagView.name)
-                                //                            }
-                                //                            newProject.tags = tempTags
-                                
+                                var tempTags: [Tags] = []
+                                for tagView in tagViews {
+                                    tempTags.append(tagView.name)
+                                }
+                                newProject.tags = tempTags
                                 viewModel.isAddingProject = false
                                 dataController.addProject(project: newProject)
                             } label: {
