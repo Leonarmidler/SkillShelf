@@ -7,14 +7,33 @@
 
 import SwiftUI
 
-struct InProgressView: View {    
+struct InProgressView: View {
+    
+    @EnvironmentObject var viewModel: PortfolioViewModel
+    @EnvironmentObject var dataController: DataController
+    
+    @State var tags: [String] = []
     var body: some View {
-        Text("Hello, World")
+        Text("Ciao")
+            .onAppear(){
+//                tags.append("SwiftUI")
+//                tags.append("UIKit")
+//                tags.append("CoreML")
+//                tags.append("CoreData")
+//                tags.append("PhotosUI")
+//
+//                for tag in tags {
+//                    dataController.addTag(tag: tag)
+//                }
+                print(dataController.savedTags[0].name)
+                print(dataController.savedTags[0].projects)
+
+            }
     }
 }
 
-struct InProgress_Previews: PreviewProvider {
-    static var previews: some View {
-        InProgressView()
-    }
-}
+//struct InProgress_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InProgressView()
+//    }
+//}

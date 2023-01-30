@@ -15,7 +15,6 @@ struct AddProjectModal: View {
     @EnvironmentObject var dataController: DataController
     @State public var newProject: ProjectModel
 
-    //@State var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
     @State var tagViews: [TagView] = []
     @State var isSelectingTag: Bool = false
     

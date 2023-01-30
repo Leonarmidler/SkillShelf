@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct PortfolioView: View {
-    @StateObject private var viewModel = PortfolioViewModel()
-    @StateObject private var dataController = DataController()
+    @EnvironmentObject private var viewModel: PortfolioViewModel
+    @EnvironmentObject private var dataController: DataController
     @State private var showingAlert: Bool = false
     let columns: [GridItem] = [GridItem(), GridItem()]
     
@@ -21,6 +21,9 @@ struct PortfolioView: View {
                         LazyVGrid(columns: columns) {
                             ForEach(dataController.savedProjects) { project in
                                 let image = UIImage(data: project.image!)
+//                                let tagNames = dataController.savedProjects[0].tags?.map {
+//                                    ($0 as! TagEntity).name ?? "Unknown"
+//                                }
                                 
                                 let newProject = ProjectModel(id: project.idCD!, image: image!, title: project.title!, summary: project.summary!, tags: [])
                                 NavigationLink(destination: {

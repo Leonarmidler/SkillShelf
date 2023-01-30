@@ -11,6 +11,7 @@ import UIKit
 
 final class DataController: ObservableObject {
     @Published var savedProjects: [ProjectEntity] = []
+    @Published var savedTags: [TagEntity] = []
 
     let container: NSPersistentContainer
 
@@ -24,6 +25,7 @@ final class DataController: ObservableObject {
             }
         }
         fetchData()
+        fetchTags()
     }
 
     func fetchData() {
@@ -35,6 +37,8 @@ final class DataController: ObservableObject {
         }
     }
 
+    // PROJECTS
+    
     func addProject(project: ProjectModel) {
         let newProject = ProjectEntity(context: container.viewContext)
         newProject.idCD = project.id
@@ -45,11 +49,7 @@ final class DataController: ObservableObject {
         } else {
             newProject.image = project.image?.jpegData(compressionQuality: 50)
         }
-        for tag in project.tags {
-            var tempTag = TagEntity(context: container.viewContext)
-            tempTag.name = String(describing: tag)
-            tempTag.addToProject(newProject)
-        }
+
         saveData()
     }
     
@@ -70,6 +70,26 @@ final class DataController: ObservableObject {
             saveData()
         }
     }
+    
+    // TAGS
+    
+    func addTag(tag: String) {
+        
+        let newTag = TagEntity(context: container.viewContext)
+        newTag.name = tag
+        savedTags.append(newTag)
+        saveData()
+        
+    }
+    
+    func fetchTags() {
+        let request = NSFetchRequest<TagEntity>(entityName: "TagEntity")
+        do {
+            savedTags = try container.viewContext.fetch(request)
+        } catch let error {
+            print("Error fetching. \(error)")
+        }
+    }
 
     func deleteAll() {
         for index in savedProjects.indices {
@@ -83,6 +103,7 @@ final class DataController: ObservableObject {
     func saveData() {
         do {
             try container.viewContext.save()
+            fetchTags()
             fetchData()
         } catch let error {
             print("Error saving. \(error)")

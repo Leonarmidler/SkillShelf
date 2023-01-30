@@ -23,8 +23,8 @@ struct TagView: View, Identifiable {
     }
 }
 
-struct TagView_Previews: PreviewProvider {
-    static var previews: some View {
-        TagView(name: .SwiftUI)
-    }
-}
+//struct TagView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TagView(name: .SwiftUI)
+//    }
+//}

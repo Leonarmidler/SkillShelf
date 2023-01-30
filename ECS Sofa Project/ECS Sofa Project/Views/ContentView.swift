@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
+    @StateObject private var viewModel = PortfolioViewModel()
+    @StateObject private var dataController = DataController()
+    
     var body: some View {
         TabView {
             PortfolioView()
@@ -22,6 +25,8 @@ struct ContentView: View {
                     Image(systemName: "checklist")
                 }.tag(2)
         }
+        .environmentObject(viewModel)
+        .environmentObject(dataController)
     }
 }
 
