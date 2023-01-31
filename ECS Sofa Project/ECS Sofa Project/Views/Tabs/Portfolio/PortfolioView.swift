@@ -39,6 +39,8 @@ struct PortfolioView: View {
                                 })
                                 .contextMenu {
                                     Button(role: .destructive) {
+                                        // the index of the selected project is saved
+                                        viewModel.indexToDelete = dataController.savedProjects.firstIndex(of: project)!
                                         showingAlert = true
                                     } label: {
                                         Image(systemName: "trash")
@@ -47,7 +49,8 @@ struct PortfolioView: View {
                                 }
                                 .alert("Are you sure you want to delete this?", isPresented: $showingAlert) {
                                     Button("Delete", role: .destructive) {
-                                        dataController.deleteProject(project: project)
+                                        // the selected project is deleted
+                                        dataController.deleteProject(indexToDelete: viewModel.indexToDelete)
                                     }
                                     Button("Cancel", role: .cancel) { }
                                 } message: {

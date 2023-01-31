@@ -72,11 +72,9 @@ final class DataController: ObservableObject {
         }
     }
     
-    func deleteProject(project: ProjectEntity) {
-        if let index = savedProjects.firstIndex(where: {project.idCD == $0.idCD}) {
-            container.viewContext.delete(savedProjects[index])
+    func deleteProject(indexToDelete: Int) {
+            container.viewContext.delete(savedProjects[indexToDelete])
             saveData()
-        }
     }
     
     // TAGS

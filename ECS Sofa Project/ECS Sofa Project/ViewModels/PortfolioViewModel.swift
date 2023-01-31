@@ -35,6 +35,7 @@ final class PortfolioViewModel: ObservableObject {
     @Published var checks: [Bool] = []
     let decoder = JSONDecoder()
     
+    @Published var indexToDelete: Int = 0
     @Published var isEditing = false
     @Published var isAddingProject = false
     @Published var isAddingFromGit = false
