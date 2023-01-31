@@ -49,6 +49,14 @@ final class DataController: ObservableObject {
         } else {
             newProject.image = project.image?.jpegData(compressionQuality: 50)
         }
+        for enumTag in project.tags {
+            for tag in savedTags {
+                if String(describing: enumTag) == tag.name {
+                    newProject.addToTags(tag)
+                    tag.addToProjects(newProject)
+                }
+            }
+        }
 
         saveData()
     }

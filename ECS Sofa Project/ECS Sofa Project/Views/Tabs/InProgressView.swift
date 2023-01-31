@@ -13,6 +13,7 @@ struct InProgressView: View {
     @EnvironmentObject var dataController: DataController
     
     @State var tags: [String] = []
+    
     var body: some View {
         Text("Ciao")
             .onAppear(){
@@ -25,9 +26,9 @@ struct InProgressView: View {
 //                for tag in tags {
 //                    dataController.addTag(tag: tag)
 //                }
-                print(dataController.savedTags[0].name)
-                print(dataController.savedTags[0].projects)
-
+                for x in dataController.savedTags {
+                    print(x.name)
+                }
             }
     }
 }

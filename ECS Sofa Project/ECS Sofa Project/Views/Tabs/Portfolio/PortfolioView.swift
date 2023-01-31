@@ -12,7 +12,13 @@ struct PortfolioView: View {
     @EnvironmentObject private var dataController: DataController
     @State private var showingAlert: Bool = false
     let columns: [GridItem] = [GridItem(), GridItem()]
-    
+    func convertToTags(from source: [String]) -> [Tags] {
+        var tempTags: [Tags] = []
+        for name in source {
+            tempTags.append(Tags(rawValue: name)!)
+        }
+        return tempTags
+    }
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
@@ -21,11 +27,11 @@ struct PortfolioView: View {
                         LazyVGrid(columns: columns) {
                             ForEach(dataController.savedProjects) { project in
                                 let image = UIImage(data: project.image!)
-//                                let tagNames = dataController.savedProjects[0].tags?.map {
-//                                    ($0 as! TagEntity).name ?? "Unknown"
-//                                }
-                                
-                                let newProject = ProjectModel(id: project.idCD!, image: image!, title: project.title!, summary: project.summary!, tags: [])
+                                let tagNames = project.tags?.map {
+                                    ($0 as! TagEntity).name ?? "Unknown"
+                                }
+                                let tempTags = convertToTags(from: tagNames!)
+                                let newProject = ProjectModel(id: project.idCD!, image: image!, title: project.title!, summary: project.summary!, tags: tempTags)
                                 NavigationLink(destination: {
                                     ProjectView(project: newProject)
                                 }, label: {
@@ -76,3 +82,4 @@ struct Portfolio_Previews: PreviewProvider {
         PortfolioView()
     }
 }
+

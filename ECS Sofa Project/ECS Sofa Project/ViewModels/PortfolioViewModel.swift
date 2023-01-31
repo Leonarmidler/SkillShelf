@@ -10,11 +10,11 @@ import PhotosUI
 import SwiftUI
 
 enum Tags: String, CaseIterable {
-    case SwiftUI,
-         UIKit,
-         CoreML,
-         CoreData,
-         PhotosUI
+    case SwiftUI = "SwiftUI",
+         UIKit = "UIKit",
+         CoreML = "CoreML",
+         CoreData = "CoreData",
+         PhotosUI = "PhotosUI"
     
 //    var name: String {
 //        switch self {
