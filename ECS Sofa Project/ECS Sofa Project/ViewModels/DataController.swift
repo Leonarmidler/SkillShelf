@@ -32,8 +32,8 @@ final class DataController: ObservableObject {
         let request = NSFetchRequest<ProjectEntity>(entityName: "ProjectEntity")
         do {
             savedProjects = try container.viewContext.fetch(request)
-        } catch let error {
-            print("Error fetching. \(error)")
+        } catch {
+            print("Error fetching. \(error.localizedDescription)")
         }
     }
 
@@ -50,20 +50,17 @@ final class DataController: ObservableObject {
             newProject.image = project.image?.jpegData(compressionQuality: 50)
         }
         for enumTag in project.tags {
-            for tag in savedTags {
-                if String(describing: enumTag) == tag.name {
-                    newProject.addToTags(tag)
-                    tag.addToProjects(newProject)
-                }
+            for tag in savedTags where String(describing: enumTag) == tag.name {
+                newProject.addToTags(tag)
+                tag.addToProjects(newProject)
             }
         }
 
         saveData()
     }
     
-    func editProject(idProject: UUID, editedProject: ProjectModel){
-        if let index = savedProjects.firstIndex(where: {idProject == $0.idCD}) {
-            
+    func editProject(idProject: UUID, editedProject: ProjectModel) {
+        if let index = savedProjects.firstIndex(where: { idProject == $0.idCD }) {
             savedProjects[index].title = editedProject.title
             savedProjects[index].summary = editedProject.summary
             savedProjects[index].image = editedProject.image?.jpegData(compressionQuality: 50)
@@ -80,20 +77,18 @@ final class DataController: ObservableObject {
     // TAGS
     
     func addTag(tag: String) {
-        
         let newTag = TagEntity(context: container.viewContext)
         newTag.name = tag
         savedTags.append(newTag)
         saveData()
-        
     }
     
     func fetchTags() {
         let request = NSFetchRequest<TagEntity>(entityName: "TagEntity")
         do {
             savedTags = try container.viewContext.fetch(request)
-        } catch let error {
-            print("Error fetching. \(error)")
+        } catch {
+            print("Error fetching. \(error.localizedDescription)")
         }
     }
 
@@ -111,8 +106,8 @@ final class DataController: ObservableObject {
             try container.viewContext.save()
             fetchTags()
             fetchData()
-        } catch let error {
-            print("Error saving. \(error)")
+        } catch {
+            print("Error saving. \(error.localizedDescription)")
         }
     }
 }

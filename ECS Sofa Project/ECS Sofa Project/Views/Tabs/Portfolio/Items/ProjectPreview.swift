@@ -18,15 +18,15 @@ struct ProjectPreview: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: height)
             .cornerRadius(radius, corners: [.allCorners])
             .shadow(color: .black.opacity(0.15), radius: 24, x: 0, y: 8)
-            .overlay(){
-                ZStack{
+            .overlay {
+                ZStack {
                     VStack {
                         Spacer()
                         Rectangle()
                             .cornerRadius(radius, corners: [.bottomRight, .bottomLeft])
                             .frame(minHeight: height / 5, maxHeight: height / 5)
                             .foregroundColor(.white)
-                            .overlay(){
+                            .overlay {
                                 HStack {
                                     Text(project.title)
                                         .font(.caption)
@@ -40,21 +40,19 @@ struct ProjectPreview: View {
                     RoundedRectangle(cornerRadius: radius)
                         .stroke(Color.black, lineWidth: 2)
                 }
-                
             }
     }
 }
 
-//struct ProjectPreview_Previews: PreviewProvider {
+// struct ProjectPreview_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ProjectPreview(project: ProjectModel(id: UUID(), image: UIImage(named: "Project"), title: "Title", summary: "Description", tags: [.SwiftUI, .UIKit]), height: 120, radius: 12)
 //    }
-//}
+// }
 
 extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
-        
     }
 }
 

@@ -5,18 +5,18 @@
 //  Created by Leonardo Daniele on 11/01/23.
 //
 
-import SwiftUI
 import PhotosUI
+import SwiftUI
 
 struct AddProjectModal: View {
     @State var idProject: UUID
     
     @EnvironmentObject var viewModel: PortfolioViewModel
     @EnvironmentObject var dataController: DataController
-    @State public var newProject: ProjectModel
+    @State var newProject: ProjectModel
 
     @State var tagViews: [TagView] = []
-    @State var isSelectingTag: Bool = false
+    @State var isSelectingTag = false
     
     let columns: [GridItem] = [GridItem(), GridItem(), GridItem()]
     
@@ -37,26 +37,26 @@ struct AddProjectModal: View {
                             TextField("Enter project description", text: $newProject.summary)
                         }
                         Section("Tags") {
-                            VStack{
-                                Button(action: {
+                            VStack {
+                                Button {
                                     isSelectingTag.toggle()
-                                }, label: {
-                                    HStack{
+                                } label: {
+                                    HStack {
                                         Image(systemName: "plus.circle.fill")
                                             .foregroundColor(Color(UIColor.systemGreen))
                                         Text("Add a tag")
                                             .foregroundColor(Color(UIColor.label))
                                     }
-                                })
+                                }
                                 .offset(x: 0, y: 3)
                                 LazyVGrid(columns: columns) {
-                                    ForEach(tagViews){ tagView in
+                                    ForEach(tagViews) { tagView in
                                         tagView
                                     }
                                 }
                             }
-                            .sheet(isPresented: $isSelectingTag){
-                                TagSelectionView(isSelectingTag: $isSelectingTag, tagViews: $tagViews, checks: Array(repeating: false, count: viewModel.tagList.count))
+                            .sheet(isPresented: $isSelectingTag) {
+                                TagSelectionView(checks: Array(repeating: false, count: viewModel.tagList.count), isSelectingTag: $isSelectingTag, tagViews: $tagViews)
                             }
                         }
                         Spacer()
@@ -84,7 +84,7 @@ struct AddProjectModal: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        if !viewModel.isEditing{
+                        if !viewModel.isEditing {
                             Button {
                                 var tempTags: [Tags] = []
                                 for tagView in tagViews {
@@ -104,13 +104,11 @@ struct AddProjectModal: View {
                                 Text("Done")
                             }
                         }
-                        
                     }
                     ToolbarItem(placement: .cancellationAction) {
                         Button {
                             viewModel.isAddingProject = false
                             viewModel.isEditing = false
-                            
                         } label: {
                             Text("Cancel")
                         }

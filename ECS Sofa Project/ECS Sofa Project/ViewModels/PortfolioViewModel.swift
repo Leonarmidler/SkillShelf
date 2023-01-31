@@ -10,23 +10,12 @@ import PhotosUI
 import SwiftUI
 
 enum Tags: String, CaseIterable {
-    case SwiftUI = "SwiftUI",
-         UIKit = "UIKit",
-         CoreML = "CoreML",
-         CoreData = "CoreData",
-         PhotosUI = "PhotosUI"
-    
-//    var name: String {
-//        switch self {
-//            case .SwiftUI: return "SwiftUI"
-//            case .UIKit: return "UIKit"
-//            case .CoreML: return "CoreML"
-//            case .CoreData: return "CoreData"
-//            case .PhotosUI: return "PhotosUI"
-//        }
-//    }
+    case SwiftUI,
+         UIKit,
+         CoreML,
+         CoreData,
+         PhotosUI
 }
-
 
 @MainActor
 final class PortfolioViewModel: ObservableObject {
@@ -52,13 +41,5 @@ final class PortfolioViewModel: ObservableObject {
         } catch {
             print("ERROR: \(error.localizedDescription)")
         }
-    }
-    
-    func getTags(project: ProjectEntity){
-        
-    }
-    
-    func setTags(project: ProjectEntity){
-        
     }
 }

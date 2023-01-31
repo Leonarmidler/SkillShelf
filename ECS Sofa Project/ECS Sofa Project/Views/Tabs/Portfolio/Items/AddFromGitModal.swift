@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddFromGitModal: View {
-    
     @EnvironmentObject var viewModel: PortfolioViewModel
     @Binding var newProject: ProjectModel
     
@@ -22,7 +21,7 @@ struct AddFromGitModal: View {
                         TextField("Enter GitHub user name", text: $userName)                        
                     }
                     
-                    HStack{
+                    HStack {
                         Spacer()
                         Button {
                             Task {
@@ -50,7 +49,6 @@ struct AddFromGitModal: View {
                                     Image(systemName: viewModel.checks[index] ? "checkmark.circle" : "circle")
                                         .foregroundColor(Color(UIColor.label))
                                 }
-                                
                             }
                         }
                     }
@@ -64,7 +62,6 @@ struct AddFromGitModal: View {
                     } label: {
                         Text("Done")
                     }
-                    
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
@@ -78,8 +75,8 @@ struct AddFromGitModal: View {
     }
 }
 
-//struct AddFromGitModal_Previews: PreviewProvider {
+// struct AddFromGitModal_Previews: PreviewProvider {
 //    static var previews: some View {
 //        AddFromGitModal()
 //    }
-//}
+// }

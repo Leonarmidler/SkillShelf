@@ -10,7 +10,7 @@ import SwiftUI
 struct PortfolioView: View {
     @EnvironmentObject private var viewModel: PortfolioViewModel
     @EnvironmentObject private var dataController: DataController
-    @State private var showingAlert: Bool = false
+    @State private var showingAlert = false
     let columns: [GridItem] = [GridItem(), GridItem()]
     func convertToTags(from source: [String]) -> [Tags] {
         var tempTags: [Tags] = []
@@ -72,7 +72,7 @@ struct PortfolioView: View {
                 })
             }
             .sheet(isPresented: $viewModel.isAddingProject) {
-                AddProjectModal(idProject: UUID(),newProject: ProjectModel(id: UUID(), title: "", summary: "", tags: []))
+                AddProjectModal(idProject: UUID(), newProject: ProjectModel(id: UUID(), title: "", summary: "", tags: []))
             }
         }
         .environmentObject(viewModel)
@@ -85,4 +85,3 @@ struct Portfolio_Previews: PreviewProvider {
         PortfolioView()
     }
 }
-

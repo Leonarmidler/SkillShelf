@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct InProgressView: View {
-    
     @EnvironmentObject var viewModel: PortfolioViewModel
     @EnvironmentObject var dataController: DataController
     
@@ -16,7 +15,7 @@ struct InProgressView: View {
     
     var body: some View {
         Text("Ciao")
-            .onAppear(){
+            .onAppear {
 //                tags.append("SwiftUI")
 //                tags.append("UIKit")
 //                tags.append("CoreML")
@@ -27,14 +26,14 @@ struct InProgressView: View {
 //                    dataController.addTag(tag: tag)
 //                }
                 for x in dataController.savedTags {
-                    print(x.name)
+                    print(x.name ?? "eheh")
                 }
             }
     }
 }
 
-//struct InProgress_Previews: PreviewProvider {
+// struct InProgress_Previews: PreviewProvider {
 //    static var previews: some View {
 //        InProgressView()
 //    }
-//}
+// }

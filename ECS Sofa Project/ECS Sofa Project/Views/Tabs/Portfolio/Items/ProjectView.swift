@@ -16,7 +16,7 @@ struct ProjectView: View {
         NavigationStack {
             GeometryReader { geo in
                 ScrollView {
-                    VStack (spacing: 30){
+                    VStack(spacing: 30) {
                         Image(uiImage: (project.image ?? UIImage(named: "noImage"))!)
                             .resizable()
                             .scaledToFit()
@@ -47,14 +47,14 @@ struct ProjectView: View {
                         .padding()
                         HStack {
                             VStack(alignment: .leading, spacing: 10) {
-                                HStack{
+                                HStack {
                                     Text("TAGS")
                                         .fontWeight(.light)
                                         .font(.system(.headline, design: .rounded))
                                     Spacer()
                                 }
-                                LazyVGrid(columns: columns){
-                                    ForEach(project.tags, id: \.self){ tag in
+                                LazyVGrid(columns: columns) {
+                                    ForEach(project.tags, id: \.self) { tag in
                                         TagView(name: tag)
                                             .padding(.bottom)
                                     }
@@ -67,7 +67,7 @@ struct ProjectView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle("Title")
-                .toolbar() {
+                .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             viewModel.isEditing = true
@@ -76,7 +76,6 @@ struct ProjectView: View {
                         }
                     }
                 }
-                
             }
         }
         .sheet(isPresented: $viewModel.isEditing) {
