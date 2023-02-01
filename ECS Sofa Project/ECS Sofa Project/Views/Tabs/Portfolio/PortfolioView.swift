@@ -12,13 +12,6 @@ struct PortfolioView: View {
     @EnvironmentObject private var dataController: DataController
     @State private var showingAlert = false
     let columns: [GridItem] = [GridItem(), GridItem()]
-    func convertToTags(from source: [String]) -> [Tags] {
-        var tempTags: [Tags] = []
-        for name in source {
-            tempTags.append(Tags(rawValue: name)!)
-        }
-        return tempTags
-    }
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
@@ -26,16 +19,13 @@ struct PortfolioView: View {
                     VStack {
                         LazyVGrid(columns: columns) {
                             ForEach(dataController.savedProjects) { project in
-                                let image = UIImage(data: project.image!)
-                                let tagNames = project.tags?.map {
-                                    ($0 as! TagEntity).name ?? "Unknown"
-                                }
-                                let tempTags = convertToTags(from: tagNames!)
-                                let newProject = ProjectModel(id: project.idCD!, image: image!, title: project.title!, summary: project.summary!, tags: tempTags)
+//                                let image = UIImage(data: project.image!)
+//                                let tempTags = convertToTags(from: tagNames!)
+//                                let newProject = ProjectModel(id: project.idCD!, image: image!, title: project.title!, summary: project.summary!, tags: tempTags)
                                 NavigationLink(destination: {
-                                    ProjectView(project: newProject)
+                                    ProjectView(project: project)
                                 }, label: {
-                                    ProjectPreview(project: newProject, height: geo.size.width * 0.3, radius: 12)
+                                    ProjectPreview(project: project, height: geo.size.width * 0.3, radius: 12)
                                 })
                                 .contextMenu {
                                     Button(role: .destructive) {
@@ -80,8 +70,8 @@ struct PortfolioView: View {
     }
 }
 
-struct Portfolio_Previews: PreviewProvider {
-    static var previews: some View {
-        PortfolioView()
-    }
-}
+//struct Portfolio_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PortfolioView()
+//    }
+//}

@@ -10,14 +10,15 @@ import SwiftUI
 struct ProjectView: View {
     @EnvironmentObject var viewModel: PortfolioViewModel
     
-    var project: ProjectModel
+    var project: ProjectEntity 
     let columns: [GridItem] = [GridItem(), GridItem(), GridItem()]
     var body: some View {
+        let image = UIImage(data: project.image!)
         NavigationStack {
             GeometryReader { geo in
                 ScrollView {
                     VStack(spacing: 30) {
-                        Image(uiImage: (project.image ?? UIImage(named: "noImage"))!)
+                        Image(uiImage: UIImage(data: project.image!)!)
                             .resizable()
                             .scaledToFit()
                             .cornerRadius(15)
@@ -28,7 +29,7 @@ struct ProjectView: View {
                                 Text("TITLE")
                                     .fontWeight(.light)
                                     .font(.system(.headline, design: .rounded))
-                                Text(project.title)
+                                Text(project.title ?? "")
                                     .font(.title2)
                             }
                             Spacer()
@@ -39,7 +40,7 @@ struct ProjectView: View {
                                 Text("DESCRIPTION")
                                     .fontWeight(.light)
                                     .font(.system(.headline, design: .rounded))
-                                Text(project.summary)
+                                Text(project.summary ?? "")
                                     .font(.title2)
                             }
                             Spacer()
@@ -54,7 +55,7 @@ struct ProjectView: View {
                                     Spacer()
                                 }
                                 LazyVGrid(columns: columns) {
-                                    ForEach(project.tags, id: \.self) { tag in
+                                    ForEach(viewModel.convertToTags(from: project.tags ?? []), id: \.self) { tag in
                                         TagView(name: tag)
                                             .padding(.bottom)
                                     }
@@ -79,14 +80,14 @@ struct ProjectView: View {
             }
         }
         .sheet(isPresented: $viewModel.isEditing) {
-            AddProjectModal(idProject: project.id, newProject: project)
+//            AddProjectModal(idProject: project.id, newProject: project)
         }
     }
 }
 
-struct ProjectView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProjectView(project: ProjectModel(id: UUID(), title: "Ciao", summary: "Lorem ipsum", tags: [.SwiftUI, .UIKit, .CoreData, .PhotosUI]))
-            .preferredColorScheme(.dark)
-    }
-}
+//struct ProjectView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProjectView(project: ProjectModel(id: UUID(), title: "Ciao", summary: "Lorem ipsum", tags: [.SwiftUI, .UIKit, .CoreData, .PhotosUI]))
+//            .preferredColorScheme(.dark)
+//    }
+//}

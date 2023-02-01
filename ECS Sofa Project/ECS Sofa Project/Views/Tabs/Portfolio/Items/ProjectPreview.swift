@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ProjectPreview: View {
-    let project: ProjectModel
+    let project: ProjectEntity
     let height: CGFloat
     let radius: CGFloat
     var body: some View {
-        Image(uiImage: (project.image ?? UIImage(named: "noImage"))!)
+        Image(uiImage: UIImage(data: project.image! )!)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: height)
@@ -28,7 +28,7 @@ struct ProjectPreview: View {
                             .foregroundColor(.white)
                             .overlay {
                                 HStack {
-                                    Text(project.title)
+                                    Text(project.title ?? "")
                                         .font(.caption)
                                         .fontWeight(.semibold)
                                         .foregroundColor(.black)

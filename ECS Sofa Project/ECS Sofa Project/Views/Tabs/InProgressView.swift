@@ -15,7 +15,7 @@ struct InProgressView: View {
     
     var body: some View {
         Text("Ciao")
-            .onAppear {
+//            .onAppear {
 //                tags.append("SwiftUI")
 //                tags.append("UIKit")
 //                tags.append("CoreML")
@@ -25,10 +25,10 @@ struct InProgressView: View {
 //                for tag in tags {
 //                    dataController.addTag(tag: tag)
 //                }
-                for x in dataController.savedTags {
-                    print(x.name ?? "eheh")
-                }
-            }
+//                for x in dataController.savedTags {
+//                    print(x.name ?? "eheh")
+//                }
+//            }
     }
 }
 

@@ -42,4 +42,15 @@ final class PortfolioViewModel: ObservableObject {
             print("ERROR: \(error.localizedDescription)")
         }
     }
+    
+    func convertToTags(from source: NSSet) -> [Tags] {
+        let tagNames = source.map {
+            ($0 as! TagEntity).name ?? "Unknown"
+        }
+        var tempTags: [Tags] = []
+        for name in tagNames {
+            tempTags.append(Tags(rawValue: name)!)
+        }
+        return tempTags
+    }
 }
