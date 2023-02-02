@@ -13,7 +13,7 @@ struct ProjectView: View {
     var project: ProjectEntity 
     let columns: [GridItem] = [GridItem(), GridItem(), GridItem()]
     var body: some View {
-        let image = UIImage(data: project.image!)
+//        let image = UIImage(data: project.image!)
         NavigationStack {
             GeometryReader { geo in
                 ScrollView {
@@ -80,7 +80,8 @@ struct ProjectView: View {
             }
         }
         .sheet(isPresented: $viewModel.isEditing) {
-//            AddProjectModal(idProject: project.id, newProject: project)
+            let editProject = ProjectModel(id: project.idCD!, image: UIImage(data: project.image!), title: project.title!, summary: project.summary!, tags: viewModel.convertToTags(from: project.tags!))
+            AddProjectModal(newProject: editProject)
         }
     }
 }

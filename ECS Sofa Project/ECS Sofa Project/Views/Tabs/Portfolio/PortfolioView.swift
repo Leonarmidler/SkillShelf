@@ -12,6 +12,7 @@ struct PortfolioView: View {
     @EnvironmentObject private var dataController: DataController
     @State private var showingAlert = false
     let columns: [GridItem] = [GridItem(), GridItem()]
+    
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
@@ -22,11 +23,11 @@ struct PortfolioView: View {
 //                                let image = UIImage(data: project.image!)
 //                                let tempTags = convertToTags(from: tagNames!)
 //                                let newProject = ProjectModel(id: project.idCD!, image: image!, title: project.title!, summary: project.summary!, tags: tempTags)
-                                NavigationLink(destination: {
+                                NavigationLink {
                                     ProjectView(project: project)
-                                }, label: {
+                                } label: {
                                     ProjectPreview(project: project, height: geo.size.width * 0.3, radius: 12)
-                                })
+                                }
                                 .contextMenu {
                                     Button(role: .destructive) {
                                         // the index of the selected project is saved
@@ -55,14 +56,14 @@ struct PortfolioView: View {
             }
             .navigationTitle("Portfolio")
             .toolbar {
-                Button(action: {
+                Button {
                     viewModel.isAddingProject = true
-                }, label: {
+                } label: {
                     Image(systemName: "plus")
-                })
+                }
             }
             .sheet(isPresented: $viewModel.isAddingProject) {
-                AddProjectModal(idProject: UUID(), newProject: ProjectModel(id: UUID(), title: "", summary: "", tags: []))
+                AddProjectModal(newProject: ProjectModel(id: UUID(), title: "", summary: "", tags: []))
             }
         }
         .environmentObject(viewModel)

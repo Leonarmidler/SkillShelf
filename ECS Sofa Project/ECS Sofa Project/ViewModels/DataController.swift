@@ -37,7 +37,7 @@ final class DataController: ObservableObject {
         }
     }
 
-    // PROJECTS
+// PROJECTS
     
     func addProject(project: ProjectModel) {
         let newProject = ProjectEntity(context: container.viewContext)
@@ -59,12 +59,28 @@ final class DataController: ObservableObject {
         saveData()
     }
     
-    func editProject(idProject: UUID, editedProject: ProjectModel) {
-        if let index = savedProjects.firstIndex(where: { idProject == $0.idCD }) {
+    func editProject(editedProject: ProjectModel) {
+        if let index = savedProjects.firstIndex(where: { editedProject.id == $0.idCD }) {
             savedProjects[index].title = editedProject.title
             savedProjects[index].summary = editedProject.summary
             savedProjects[index].image = editedProject.image?.jpegData(compressionQuality: 50)
             
+            // RIMUOVO TUTTE LE TAG DAL ENTITY DA MODIFICARE
+            if savedProjects[index].tags != nil {
+                for tag in savedProjects[index].tags! {
+                    (tag as! TagEntity).removeFromProjects(savedProjects[index])
+                }
+                savedProjects[index].removeFromTags(savedProjects[index].tags!)
+            }
+            
+            // SALVO TUTTE LE TAG INSERITE NELL' ENTITY DA MODIFICARE
+            for enumTag in editedProject.tags {
+                for tag in savedTags where String(describing: enumTag) == tag.name {
+                    savedProjects[index].addToTags(tag)
+                    tag.addToProjects(savedProjects[index])
+                }
+            }
+
             saveData()
         }
     }
@@ -74,7 +90,7 @@ final class DataController: ObservableObject {
             saveData()
     }
     
-    // TAGS
+// TAGS
     
     func addTag(tag: String) {
         let newTag = TagEntity(context: container.viewContext)

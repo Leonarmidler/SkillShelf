@@ -32,18 +32,18 @@ struct ContentView: View {
     }
     
     var body: some View {
-        TabView {
+//        TabView {
             PortfolioView()
-                .tabItem {
-                    Text("Portfolio")
-                    Image(systemName: "tray.full")
-                }.tag(1)
-            InProgressView()
-                .tabItem {
-                    Text("In Progress")
-                    Image(systemName: "checklist")
-                }.tag(2)
-        }
+//                .tabItem {
+//                    Text("Portfolio")
+//                    Image(systemName: "tray.full")
+//                }.tag(1)
+//            InProgressView()
+//                .tabItem {
+//                    Text("In Progress")
+//                    Image(systemName: "checklist")
+//                }.tag(2)
+//        }
         .environmentObject(viewModel)
         .environmentObject(dataController)
     }

@@ -9,7 +9,7 @@ import PhotosUI
 import SwiftUI
 
 struct AddProjectModal: View {
-    @State var idProject: UUID
+//    @State var idProject: UUID
     
     @EnvironmentObject var viewModel: PortfolioViewModel
     @EnvironmentObject var dataController: DataController
@@ -99,7 +99,12 @@ struct AddProjectModal: View {
                         } else {
                             Button {
                                 viewModel.isEditing = false
-                                dataController.editProject(idProject: idProject, editedProject: newProject)
+                                var tempTags: [Tags] = []
+                                for tagView in tagViews {
+                                    tempTags.append(tagView.name)
+                                }
+                                newProject.tags = tempTags
+                                dataController.editProject(editedProject: newProject)
                             } label: {
                                 Text("Done")
                             }
@@ -117,6 +122,13 @@ struct AddProjectModal: View {
                 .navigationTitle(viewModel.isEditing ? "Edit Project" : "Add Project")
                 .navigationBarTitleDisplayMode(.inline)
             }
+            .onAppear {
+                if viewModel.isEditing {
+                    for tag in newProject.tags {
+                        tagViews.append(TagView(name: tag))
+                    }
+                }
+            }
         }
         .sheet(isPresented: $viewModel.isAddingFromGit) {
             AddFromGitModal(newProject: $newProject)
@@ -126,7 +138,7 @@ struct AddProjectModal: View {
 
 struct AddProjectModal_Previews: PreviewProvider {
     static var previews: some View {
-        AddProjectModal(idProject: UUID(), newProject: ProjectModel(id: UUID(), title: "", summary: "", tags: []))
+        AddProjectModal(newProject: ProjectModel(id: UUID(), title: "", summary: "", tags: []))
             .environmentObject(DataController())
             .environmentObject(PortfolioViewModel())
             .preferredColorScheme(.dark)
