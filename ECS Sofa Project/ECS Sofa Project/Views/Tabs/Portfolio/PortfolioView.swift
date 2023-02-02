@@ -70,8 +70,10 @@ struct PortfolioView: View {
     }
 }
 
-//struct Portfolio_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PortfolioView()
-//    }
-//}
+struct Portfolio_Previews: PreviewProvider {
+    static var previews: some View {
+        PortfolioView()
+            .environmentObject(DataController())
+            .environmentObject(PortfolioViewModel())
+    }
+}

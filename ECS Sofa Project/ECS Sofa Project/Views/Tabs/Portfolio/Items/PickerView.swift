@@ -57,8 +57,8 @@ struct PickerView: View {
     }
 }
 
-// struct PickerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PickerView()
-//    }
-// }
+struct PickerView_Previews: PreviewProvider {
+    static var previews: some View {
+        PickerView(newProject: .constant(ProjectModel(id: UUID(), title: "", summary: "", tags: [])))
+    }
+}

@@ -127,6 +127,7 @@ struct AddProjectModal: View {
 struct AddProjectModal_Previews: PreviewProvider {
     static var previews: some View {
         AddProjectModal(idProject: UUID(), newProject: ProjectModel(id: UUID(), title: "", summary: "", tags: []))
+            .environmentObject(DataController())
             .environmentObject(PortfolioViewModel())
             .preferredColorScheme(.dark)
     }

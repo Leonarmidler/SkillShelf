@@ -69,6 +69,7 @@ struct TagSelectionView: View {
 struct TagSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         TagSelectionView(checks: Array(repeating: false, count: PortfolioViewModel().tagList.count), isSelectingTag: .constant(true), tagViews: .constant([TagView(name: .SwiftUI)]))
+            .environmentObject(DataController())
             .environmentObject(PortfolioViewModel())
             .preferredColorScheme(.dark)
     }

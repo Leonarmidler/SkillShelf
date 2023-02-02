@@ -32,8 +32,8 @@ struct InProgressView: View {
     }
 }
 
-// struct InProgress_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InProgressView()
-//    }
-// }
+struct InProgress_Previews: PreviewProvider {
+    static var previews: some View {
+        InProgressView()
+    }
+}

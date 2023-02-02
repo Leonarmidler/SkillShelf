@@ -75,8 +75,10 @@ struct AddFromGitModal: View {
     }
 }
 
-// struct AddFromGitModal_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddFromGitModal()
-//    }
-// }
+struct AddFromGitModal_Previews: PreviewProvider {
+    static var previews: some View {
+        AddFromGitModal(newProject: .constant(ProjectModel(id: UUID(), title: "", summary: "", tags: [])))
+            .environmentObject(DataController())
+            .environmentObject(PortfolioViewModel())
+    }
+}

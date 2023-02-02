@@ -85,9 +85,11 @@ struct ProjectView: View {
     }
 }
 
-//struct ProjectView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProjectView(project: ProjectModel(id: UUID(), title: "Ciao", summary: "Lorem ipsum", tags: [.SwiftUI, .UIKit, .CoreData, .PhotosUI]))
-//            .preferredColorScheme(.dark)
-//    }
-//}
+struct ProjectView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProjectView(project: DataController().savedProjects[0])
+            .preferredColorScheme(.dark)
+            .environmentObject(DataController())
+            .environmentObject(PortfolioViewModel())
+    }
+}

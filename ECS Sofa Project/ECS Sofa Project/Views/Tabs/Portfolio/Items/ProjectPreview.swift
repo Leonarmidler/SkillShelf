@@ -44,11 +44,11 @@ struct ProjectPreview: View {
     }
 }
 
-// struct ProjectPreview_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProjectPreview(project: ProjectModel(id: UUID(), image: UIImage(named: "Project"), title: "Title", summary: "Description", tags: [.SwiftUI, .UIKit]), height: 120, radius: 12)
-//    }
-// }
+struct ProjectPreview_Previews: PreviewProvider {
+    static var previews: some View {
+        ProjectPreview(project: DataController().savedProjects[0], height: 120, radius: 12)
+    }
+}
 
 extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
