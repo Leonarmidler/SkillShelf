@@ -10,6 +10,8 @@
 		04845A2229706C5D00180520 /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845A2129706C5D00180520 /* PortfolioViewModel.swift */; };
 		04845A24297070A200180520 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845A23297070A200180520 /* PickerView.swift */; };
 		04CE85382979952A00BDE404 /* AddFromGitModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE85372979952A00BDE404 /* AddFromGitModal.swift */; };
+		04D4DDB829801F4B00E607D3 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4DDB729801F4B00E607D3 /* DataController.swift */; };
+		04D4DDBB29801F7300E607D3 /* SavedProjects.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04D4DDB929801F7300E607D3 /* SavedProjects.xcdatamodeld */; };
 		587D57FC29798CDE0005B0E3 /* TagSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D57FA29798CDE0005B0E3 /* TagSelectionView.swift */; };
 		587D57FD29798CDE0005B0E3 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D57FB29798CDE0005B0E3 /* TagView.swift */; };
 		5881AF34297ADC970072113C /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5881AF33297ADC970072113C /* ProjectView.swift */; };
@@ -29,6 +31,8 @@
 		04845A2129706C5D00180520 /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
 		04845A23297070A200180520 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		04CE85372979952A00BDE404 /* AddFromGitModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFromGitModal.swift; sourceTree = "<group>"; };
+		04D4DDB729801F4B00E607D3 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		04D4DDBA29801F7300E607D3 /* ProjectEntity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProjectEntity.xcdatamodel; sourceTree = "<group>"; };
 		587D57FA29798CDE0005B0E3 /* TagSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagSelectionView.swift; sourceTree = "<group>"; };
 		587D57FB29798CDE0005B0E3 /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		5881AF33297ADC970072113C /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
@@ -59,6 +63,7 @@
 		04845A2029706C3E00180520 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				04D4DDB729801F4B00E607D3 /* DataController.swift */,
 				04845A2129706C5D00180520 /* PortfolioViewModel.swift */,
 			);
 			path = ViewModels;
@@ -145,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				A773F086296F0D9700AF520C /* ProjectModel.swift */,
+				04D4DDB929801F7300E607D3 /* SavedProjects.xcdatamodeld */,
 				A7EB443E29783E3D00703A25 /* Repository.swift */,
 			);
 			path = Models;
@@ -228,7 +234,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		58211A3E2975ACA300244071 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -239,7 +245,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
@@ -256,10 +262,12 @@
 				04845A24297070A200180520 /* PickerView.swift in Sources */,
 				5881AF34297ADC970072113C /* ProjectView.swift in Sources */,
 				A773F087296F0D9700AF520C /* ProjectModel.swift in Sources */,
+				04D4DDBB29801F7300E607D3 /* SavedProjects.xcdatamodeld in Sources */,
 				A733BEE4296EF073001347D7 /* ProjectPreview.swift in Sources */,
 				A733BECC296EEE8E001347D7 /* ECS_Sofa_ProjectApp.swift in Sources */,
 				587D57FC29798CDE0005B0E3 /* TagSelectionView.swift in Sources */,
 				04845A2229706C5D00180520 /* PortfolioViewModel.swift in Sources */,
+				04D4DDB829801F4B00E607D3 /* DataController.swift in Sources */,
 				A733BEDF296EEFE0001347D7 /* AddProjectModal.swift in Sources */,
 				04CE85382979952A00BDE404 /* AddFromGitModal.swift in Sources */,
 				A733BEDD296EEFAD001347D7 /* InProgressView.swift in Sources */,
@@ -392,7 +400,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ECS Sofa Project/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5849ZUY2X9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -421,7 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ECS Sofa Project/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5849ZUY2X9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -464,6 +472,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		04D4DDB929801F7300E607D3 /* SavedProjects.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				04D4DDBA29801F7300E607D3 /* ProjectEntity.xcdatamodel */,
+			);
+			currentVersion = 04D4DDBA29801F7300E607D3 /* ProjectEntity.xcdatamodel */;
+			path = SavedProjects.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A733BEC0296EEE8E001347D7 /* Project object */;
 }

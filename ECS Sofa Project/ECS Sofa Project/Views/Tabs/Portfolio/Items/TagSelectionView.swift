@@ -8,34 +8,30 @@
 import SwiftUI
 
 struct TagSelectionView: View {
-    
+    @EnvironmentObject var viewModel: PortfolioViewModel
+    @State var newTags: [TagView] = []
+    @State var checks: [Bool]
     @Binding var isSelectingTag: Bool
     @Binding var tagViews: [TagView]
     
-    //@State var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
-    @EnvironmentObject var viewModel: PortfolioViewModel
-    @State var newTags: [TagView] = []
-    //@State var tagSelections = [(Tags, Bool)]()
-    @State var checks: [Bool]
     var body: some View {
         NavigationStack {
-            ScrollView{
+            ScrollView {
                 ForEach(Array(viewModel.tagList.enumerated()), id: \.offset) { index, tag in
                     HStack {
                         TagView(name: tag)
                         Spacer()
                         Button {
-                            if (newTags.firstIndex(where: {$0.name == tag}) == nil) {
+                            if !newTags.contains(where: { $0.name == tag }) {
                                 newTags.append(TagView(name: tag))
                             } else {
-                                newTags.removeAll(where: {$0.name == tag})
+                                newTags.removeAll(where: { $0.name == tag })
                             }
                             checks[index].toggle()
                         } label: {
                             Image(systemName: checks[index] ? "checkmark.circle" : "circle")
                                 .foregroundColor(Color(UIColor.label))
                         }
-                        
                     }
                     .padding()
                 }
@@ -48,7 +44,6 @@ struct TagSelectionView: View {
                     } label: {
                         Text("Add")
                     }
-                    
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
@@ -60,7 +55,7 @@ struct TagSelectionView: View {
             }
             .navigationTitle("Select tags")
             .navigationBarTitleDisplayMode(.inline)
-            .onAppear(){
+            .onAppear {
                 for tagView in tagViews {
                     let index = viewModel.tagList.firstIndex(of: tagView.name)
                     checks[index!] = true
@@ -68,13 +63,13 @@ struct TagSelectionView: View {
                 newTags = tagViews
             }
         }
-        
     }
 }
 
 struct TagSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        TagSelectionView(isSelectingTag: .constant(true), tagViews: .constant([TagView(name: .SwiftUI)]), checks: Array(repeating: false, count: PortfolioViewModel().tagList.count))
+        TagSelectionView(checks: Array(repeating: false, count: PortfolioViewModel().tagList.count), isSelectingTag: .constant(true), tagViews: .constant([TagView(name: .SwiftUI)]))
+            .environmentObject(DataController())
             .environmentObject(PortfolioViewModel())
             .preferredColorScheme(.dark)
     }

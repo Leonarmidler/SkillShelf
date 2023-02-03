@@ -9,14 +9,13 @@ import Foundation
 import PhotosUI
 import SwiftUI
 
-enum Tags {
-    case SwiftUI
-    case UIKit
-    case CoreML
-    case CoreData
-    case PhotosUI
+enum Tags: String, CaseIterable {
+    case SwiftUI,
+         UIKit,
+         CoreML,
+         CoreData,
+         PhotosUI
 }
-
 
 @MainActor
 final class PortfolioViewModel: ObservableObject {
@@ -25,19 +24,12 @@ final class PortfolioViewModel: ObservableObject {
     @Published var checks: [Bool] = []
     let decoder = JSONDecoder()
     
+    @Published var indexToDelete: Int = 0
+    @Published var isEditing = false
     @Published var isAddingProject = false
     @Published var isAddingFromGit = false
     @Published var tagList: [Tags] = [.SwiftUI, .UIKit, .CoreML, .CoreData, .PhotosUI]
-
-    @Published var projectArray = [
-        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", description: "Lorem ipsum dolor sit amet", tags: []),
-        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", description: "Lorem ipsum dolor sit amet", tags: []),
-        ProjectModel(image: UIImage(named: "Project") ?? nil, title: "Title", description: "Lorem ipsum dolor sit amet", tags: [])
-    ]
-    
-    func addProject(newProject: ProjectModel) {
-        projectArray.append(newProject)
-    }
+    var tags: Tags = .SwiftUI
     
     func getRepositories(userName: String) async {
         do {
@@ -49,5 +41,16 @@ final class PortfolioViewModel: ObservableObject {
         } catch {
             print("ERROR: \(error.localizedDescription)")
         }
+    }
+    
+    func convertToTags(from source: NSSet) -> [Tags] {
+        let tagNames = source.map {
+            ($0 as! TagEntity).name ?? "Unknown"
+        }
+        var tempTags: [Tags] = []
+        for name in tagNames {
+            tempTags.append(Tags(rawValue: name)!)
+        }
+        return tempTags
     }
 }

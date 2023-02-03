@@ -7,9 +7,12 @@
 
 import SwiftUI
 
-struct InProgressView: View {    
+struct InProgressView: View {
+    @EnvironmentObject var viewModel: PortfolioViewModel
+    @EnvironmentObject var dataController: DataController
+    
     var body: some View {
-        Text("Hello, World")
+        Text("Hello World!")
     }
 }
 

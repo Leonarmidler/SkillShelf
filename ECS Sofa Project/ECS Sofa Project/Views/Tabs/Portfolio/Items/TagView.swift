@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct TagView: View, Identifiable {
-    
-    var colors: [Tags : Color] = [.SwiftUI: .red, .UIKit: .orange, .CoreML: .blue, .CoreData: .gray, .PhotosUI: .purple]
+    var colors: [Tags: Color] = [.SwiftUI: .red, .UIKit: .orange, .CoreML: .blue, .CoreData: .gray, .PhotosUI: .purple]
     var name: Tags
     var id = UUID()
     var body: some View {
         RoundedRectangle(cornerRadius: 6)
             .frame(width: 80, height: 25)
             .foregroundColor(colors[name])
-            .overlay{
+            .overlay {
                 Text(String(describing: name))
                     .foregroundColor(.white)
             }

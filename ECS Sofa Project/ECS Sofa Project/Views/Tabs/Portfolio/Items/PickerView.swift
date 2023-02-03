@@ -5,12 +5,12 @@
 //  Created by Serena on 12/01/23.
 //
 
-import SwiftUI
 import PhotosUI
+import SwiftUI
 
 struct PickerView: View {
-    @State private var selectedItem: PhotosPickerItem? = nil
-    @State private var selectedImageData: Data? = nil
+    @State private var selectedItem: PhotosPickerItem?
+    @State private var selectedImageData: Data?
     
     @Binding var newProject: ProjectModel
     
@@ -27,9 +27,15 @@ struct PickerView: View {
                                 .resizable()
                                 .scaledToFill()
                         } else {
-                            Image(systemName: "photo.on.rectangle")
-                                .font(.system(size: 100))
-                                .foregroundColor(.gray)
+                            if newProject.image != nil {
+                                Image(uiImage: newProject.image!)
+                                    .resizable()
+                                    .scaledToFill()
+                            } else {
+                                Image(systemName: "photo.on.rectangle")
+                                    .font(.system(size: 100))
+                                    .foregroundColor(.gray)
+                            }
                         }
                         
                         Spacer()
@@ -51,8 +57,8 @@ struct PickerView: View {
     }
 }
 
-//struct PickerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PickerView()
-//    }
-//}
+struct PickerView_Previews: PreviewProvider {
+    static var previews: some View {
+        PickerView(newProject: .constant(ProjectModel(id: UUID(), title: "", summary: "", tags: [])))
+    }
+}

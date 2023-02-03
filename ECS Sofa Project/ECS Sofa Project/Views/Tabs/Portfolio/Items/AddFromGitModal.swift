@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddFromGitModal: View {
-    
     @EnvironmentObject var viewModel: PortfolioViewModel
     @Binding var newProject: ProjectModel
     
@@ -22,7 +21,7 @@ struct AddFromGitModal: View {
                         TextField("Enter GitHub user name", text: $userName)                        
                     }
                     
-                    HStack{
+                    HStack {
                         Spacer()
                         Button {
                             Task {
@@ -45,12 +44,11 @@ struct AddFromGitModal: View {
                                     
                                     // Here it saves the name and the description of the chosen repo
                                     newProject.title = viewModel.repositories[index].name
-                                    newProject.description = viewModel.repositories[index].description ?? ""
+                                    newProject.summary = viewModel.repositories[index].description ?? ""
                                 } label: {
                                     Image(systemName: viewModel.checks[index] ? "checkmark.circle" : "circle")
                                         .foregroundColor(Color(UIColor.label))
                                 }
-                                
                             }
                         }
                     }
@@ -64,7 +62,6 @@ struct AddFromGitModal: View {
                     } label: {
                         Text("Done")
                     }
-                    
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
@@ -78,8 +75,10 @@ struct AddFromGitModal: View {
     }
 }
 
-//struct AddFromGitModal_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddFromGitModal()
-//    }
-//}
+struct AddFromGitModal_Previews: PreviewProvider {
+    static var previews: some View {
+        AddFromGitModal(newProject: .constant(ProjectModel(id: UUID(), title: "", summary: "", tags: [])))
+            .environmentObject(DataController())
+            .environmentObject(PortfolioViewModel())
+    }
+}

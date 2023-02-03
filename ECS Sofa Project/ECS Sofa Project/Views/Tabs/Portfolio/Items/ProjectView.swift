@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ProjectView: View {
-    var project: ProjectModel
+    @EnvironmentObject var viewModel: PortfolioViewModel
+    
+    var project: ProjectEntity 
     let columns: [GridItem] = [GridItem(), GridItem(), GridItem()]
     var body: some View {
+//        let image = UIImage(data: project.image!)
         NavigationStack {
             GeometryReader { geo in
                 ScrollView {
-                    VStack (spacing: 30){
-                        Image(uiImage: (project.image ?? UIImage(named: "noImage"))!)
+                    VStack(spacing: 30) {
+                        Image(uiImage: UIImage(data: project.image!)!)
                             .resizable()
                             .scaledToFit()
                             .cornerRadius(15)
@@ -26,7 +29,7 @@ struct ProjectView: View {
                                 Text("TITLE")
                                     .fontWeight(.light)
                                     .font(.system(.headline, design: .rounded))
-                                Text(project.title)
+                                Text(project.title ?? "")
                                     .font(.title2)
                             }
                             Spacer()
@@ -37,7 +40,7 @@ struct ProjectView: View {
                                 Text("DESCRIPTION")
                                     .fontWeight(.light)
                                     .font(.system(.headline, design: .rounded))
-                                Text(project.description)
+                                Text(project.summary ?? "")
                                     .font(.title2)
                             }
                             Spacer()
@@ -45,14 +48,14 @@ struct ProjectView: View {
                         .padding()
                         HStack {
                             VStack(alignment: .leading, spacing: 10) {
-                                HStack{
+                                HStack {
                                     Text("TAGS")
                                         .fontWeight(.light)
                                         .font(.system(.headline, design: .rounded))
                                     Spacer()
                                 }
-                                LazyVGrid(columns: columns){
-                                    ForEach(project.tags, id: \.self){ tag in
+                                LazyVGrid(columns: columns) {
+                                    ForEach(viewModel.convertToTags(from: project.tags ?? []), id: \.self) { tag in
                                         TagView(name: tag)
                                             .padding(.bottom)
                                     }
@@ -65,24 +68,29 @@ struct ProjectView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle("Title")
-                .toolbar() {
+                .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            
+                            viewModel.isEditing = true
                         } label: {
                             Text("Edit")
                         }
                     }
                 }
-                
             }
+        }
+        .sheet(isPresented: $viewModel.isEditing) {
+            let editProject = ProjectModel(id: project.idCD!, image: UIImage(data: project.image!), title: project.title!, summary: project.summary!, tags: viewModel.convertToTags(from: project.tags!))
+            AddProjectModal(newProject: editProject)
         }
     }
 }
 
 struct ProjectView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectView(project: ProjectModel(title: "Ciao", description: "Lorem ipsum", tags: [.SwiftUI, .UIKit, .CoreData, .PhotosUI]))
+        ProjectView(project: DataController().savedProjects[0])
             .preferredColorScheme(.dark)
+            .environmentObject(DataController())
+            .environmentObject(PortfolioViewModel())
     }
 }
